@@ -129,31 +129,84 @@
       lastY = y;
     }, { passive: true });
 
-    // Hamburger
-    if (hamburger && mobileMenu) {
-      hamburger.addEventListener('click', () => {
-        const open = mobileMenu.classList.toggle('open');
-        hamburger.setAttribute('aria-expanded', open);
-        const bars = $$('span', hamburger);
-        if (open) {
-          bars[0].style.transform = 'translateY(5.5px) rotate(45deg)';
-          bars[1].style.opacity   = '0';
-          bars[2].style.transform = 'translateY(-5.5px) rotate(-45deg)';
-        } else {
-          bars[0].style.transform = '';
-          bars[1].style.opacity   = '1';
-          bars[2].style.transform = '';
-        }
-      });
+    // Mobile Menu Transform & Logic
+    if (mobileMenu) {
+      if (!mobileMenu.classList.contains('transformed')) {
+        const desktopLogo = $('.cb-nav-logo');
+        const logoSrc = desktopLogo ? desktopLogo.getAttribute('src') : 'assets/images/logo.png';
+        const originalChildren = Array.from(mobileMenu.children);
+        mobileMenu.innerHTML = `
+          <img src="${logoSrc}" class="cb-nav-mobile-logo" alt="Logo">
+          <div class="cb-nav-mobile-links"></div>
+          <div class="cb-nav-mobile-contact">
+            <a href="tel:+12345678900">+1 (234) 567-8900</a>
+            <a href="mailto:hello@corebimsolutions.com">hello@corebimsolutions.com</a>
+          </div>
+        `;
+        const linksContainer = $('.cb-nav-mobile-links', mobileMenu);
+        
+        let delayIdx = 1;
+        originalChildren.forEach((child) => {
+          if (child.tagName === 'A' && !child.classList.contains('cb-mobile-cta')) {
+            child.classList.add('cb-nav-mobile-link');
+          }
+          child.style.setProperty('--stagger-idx', delayIdx);
+          delayIdx++;
+          linksContainer.appendChild(child);
+        });
+        mobileMenu.classList.add('transformed');
+      }
+
+      if (hamburger) {
+        hamburger.addEventListener('click', () => {
+          const open = mobileMenu.classList.toggle('open');
+          hamburger.setAttribute('aria-expanded', open);
+          document.body.style.overflow = open ? 'hidden' : ''; // Lock scroll
+          
+          const bars = $$('span', hamburger);
+          if (open) {
+            bars[0].style.transform = 'translateY(5.5px) rotate(45deg)';
+            bars[1].style.opacity   = '0';
+            bars[2].style.transform = 'translateY(-5.5px) rotate(-45deg)';
+          } else {
+            bars[0].style.transform = '';
+            bars[1].style.opacity   = '1';
+            bars[2].style.transform = '';
+          }
+        });
+      }
 
       $$('a', mobileMenu).forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          // Let smooth scroll handle anchors on the same page
+          if (href && href.startsWith('#')) {
+             mobileMenu.classList.remove('open');
+             document.body.style.overflow = '';
+             if (hamburger) {
+               hamburger.setAttribute('aria-expanded', false);
+               const bars = $$('span', hamburger);
+               bars[0].style.transform = ''; bars[1].style.opacity = '1'; bars[2].style.transform = '';
+             }
+             return;
+          }
+
+          e.preventDefault();
+          // Close menu visually first
           mobileMenu.classList.remove('open');
-          hamburger.setAttribute('aria-expanded', false);
-          const bars = $$('span', hamburger);
-          bars[0].style.transform = '';
-          bars[1].style.opacity   = '1';
-          bars[2].style.transform = '';
+          document.body.style.overflow = '';
+          if (hamburger) {
+            hamburger.setAttribute('aria-expanded', false);
+            const bars = $$('span', hamburger);
+            bars[0].style.transform = '';
+            bars[1].style.opacity   = '1';
+            bars[2].style.transform = '';
+          }
+          
+          // Wait for menu animation to finish (<300ms) then navigate
+          setTimeout(() => {
+            if (href) window.location.href = href;
+          }, 250);
         });
       });
     }
