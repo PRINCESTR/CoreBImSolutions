@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core BIM Solutions | On-Demand BIM & CAD Production Services</title>
+  <meta name="description" content="Scale your architectural capacity instantly. Core BIM Solutions provides high-precision BIM modeling, CAD drafting, and construction documentation for 150+ top-tier firms worldwide.">
+  <meta name="keywords" content="BIM modeling, CAD drafting, Revit services, MEP coordination, construction documentation, architectural drafting, scan to BIM, shop drawings">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.corebimsolutions.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Core BIM Solutions | On-Demand BIM & CAD Production Services">
+  <meta property="og:description" content="Scale your architectural capacity instantly without the overhead of new hires. Precision BIM and CAD support for architecture, engineering and construction firms.">
+  <meta property="og:url" content="https://www.corebimsolutions.com/">
+  <meta property="og:image" content="https://www.corebimsolutions.com/assets/images/og-home.jpg">
+  <meta property="og:site_name" content="Core BIM Solutions">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Core BIM Solutions | On-Demand BIM & CAD Production Services">
+  <meta name="twitter:description" content="Scale your architectural capacity instantly. Precision BIM & CAD support when your team is at capacity.">
+  <meta name="twitter:image" content="https://www.corebimsolutions.com/assets/images/og-home.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Core BIM Solutions",
+    "description": "On-demand BIM modeling, CAD drafting, and construction documentation services for architecture, engineering, and construction firms.",
+    "url": "https://www.corebimsolutions.com",
+    "telephone": "+12345678900",
+    "email": "hello@corebimsolutions.com",
+    "areaServed": "Worldwide",
+    "serviceType": ["BIM Modeling", "CAD Drafting", "Construction Documentation", "MEP Coordination", "Scan to BIM", "Revit Services"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "152"
+    }
+  }
+  </script>
+
+  <style>
+    /* ── Hero Blueprint Grid ── */
+    .cb-hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(#E8EEF1 1px, transparent 1px),
+        linear-gradient(90deg, #E8EEF1 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.55;
+    }
+
+    /* ── Stats Section ── */
+    .cb-stats { background: #124E66; }
+    .cb-stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 0 max(40px, calc((100% - 1280px) / 2));
+    }
+    @media(max-width:768px){ .cb-stats-inner { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:480px){ .cb-stats-inner { grid-template-columns: 1fr; } }
+    .cb-stat-item {
+      padding: 52px 24px; text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.12);
+    }
+    .cb-stat-item:last-child { border-right: none; }
+    @media(max-width:768px){
+      .cb-stat-item:nth-child(even){ border-right:none; }
+      .cb-stat-item { border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .cb-stat-item:nth-last-child(-n+2){ border-bottom:none; }
+    }
+    .cb-stat-num {
+      font-size: clamp(36px,4vw,54px);
+      font-weight: 700; color: #fff;
+      line-height: 1; margin-bottom: 8px;
+      letter-spacing: -1.5px;
+    }
+    .cb-stat-label {
+      font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 1.5px; text-transform: uppercase;
+    }
+
+    /* ── Clients Marquee ── */
+    .cb-clients-section {
+      background: #fff;
+      padding: 56px 0;
+      overflow: hidden;
+      border-top: 1px solid #E8EEF1;
+      border-bottom: 1px solid #E8EEF1;
+    }
+    .cb-clients-label {
+      text-align: center; font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; color: #748D92; text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+    .cb-clients-overflow { overflow: hidden; }
+    .cb-marquee-track {
+      display: flex; gap: 80px; width: max-content;
+      animation: marqueeScroll 30s linear infinite;
+    }
+    .cb-marquee-track:hover { animation-play-state: paused; }
+    .cb-client-item {
+      display: flex; align-items: center; gap: 10px;
+      color: #D3D9D4; font-size: 15px; font-weight: 700;
+      letter-spacing: 0.5px; white-space: nowrap; flex-shrink: 0;
+      transition: color 0.3s ease;
+    }
+    .cb-client-item:hover { color: #748D92; }
+    .cb-client-item svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
+
+    /* ── Testimonial Section ── */
+    .cb-testimonial-section {
+      background: #F4F7F8;
+      padding: 120px max(40px, calc((100% - 1280px) / 2));
+    }
+    .cb-testimonial-inner { max-width: 900px; margin: 0 auto; }
+    .cb-testimonial-wrap { position: relative; overflow: hidden; }
+    .cb-testimonial-track {
+      display: flex;
+      transition: transform 0.65s cubic-bezier(0.16,1,0.3,1);
+    }
+    .cb-testimonial-slide { flex: 0 0 100%; padding: 0 16px; }
+    .cb-test-quote-large {
+      font-size: clamp(20px,2.5vw,28px);
+      font-weight: 300; color: #212A31;
+      line-height: 1.55; margin-bottom: 40px;
+      position: relative; padding-top: 48px;
+    }
+    .cb-test-quote-large::before {
+      content: '"';
+      font-size: 100px; color: #E8EEF1;
+      position: absolute; top: -24px; left: -8px;
+      line-height: 1; font-family: Georgia, serif;
+    }
+    .cb-test-author-row { display: flex; align-items: center; gap: 16px; }
+    .cb-test-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      object-fit: cover; border: 2px solid #E8EEF1;
+    }
+    .cb-test-name { font-size: 16px; font-weight: 600; color: #212A31; margin-bottom: 3px; }
+    .cb-test-role-text { font-size: 12px; font-weight: 600; color: #748D92; letter-spacing: 1px; text-transform: uppercase; }
+    .cb-test-controls { display: flex; align-items: center; gap: 12px; margin-top: 48px; }
+    .cb-test-ctrl-btn {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1.5px solid #E8EEF1; background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.3s ease; color: #212A31;
+    }
+    .cb-test-ctrl-btn:hover { background: #124E66; border-color: #124E66; color: #fff; }
+    .cb-test-ctrl-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
+    .cb-test-dots { display: flex; gap: 6px; margin-left: 8px; }
+    .cb-test-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #D3D9D4; cursor: pointer; transition: all 0.3s ease;
+    }
+    .cb-test-dot.active { background: #124E66; width: 20px; border-radius: 4px; }
+
+    /* ── FAQ Section ── */
+    .cb-faq-section { background: #fff; }
+    .cb-faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    @media(max-width:768px){ .cb-faq-grid { grid-template-columns: 1fr; } }
+
+    /* ── Extended features grid ── */
+    .cb-extended-features-4 {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px;
+    }
+    .cb-extended-features-4 h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #124E66; }
+    .cb-extended-features-4 p { font-size: 14px; color: #748D92; line-height: 1.6; }
+
+    /* ── Social Proof Strip ── */
+    .cb-proof { background: #212A31; padding: 64px max(40px,calc((100% - 1280px)/2)); }
+    .cb-proof-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .cb-proof-item { text-align: center; }
+    .cb-proof-num { font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .cb-proof-label { font-size: 12px; font-weight: 600; color: #748D92; letter-spacing: 1.5px; text-transform: uppercase; }
+    @media(max-width:600px){ .cb-proof-inner { justify-content: center; } }
+
+    /* ── Industries strip ── */
+    .cb-industries-strip {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-top: 40px;
+    }
+    .cb-industry-pill {
+      padding: 10px 20px;
+      background: #F4F7F8; border: 1px solid #E8EEF1;
+      border-radius: 100px; font-size: 13px; font-weight: 500;
+      color: #748D92; transition: all 0.3s ease;
+      text-decoration: none; display: inline-block;
+    }
+    .cb-industry-pill:hover { background: #124E66; color: #fff; border-color: #124E66; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+     ═══════════════════════════════════════════ -->
+<div class="cb-nav-wrapper" id="cbNavWrapper">
+  <nav class="cb-nav" id="cbNav" role="navigation" aria-label="Main Navigation">
+    <a href="index.html" aria-label="Core BIM Solutions Home" style="text-decoration:none;display:flex;align-items:center;">
+      <img src="assets/images/logo.png" alt="Core BIM Solutions" class="cb-nav-logo">
+    </a>
+    <ul class="cb-nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li>
+        <a href="services/index.html">Services <span class="cb-nav-dropdown-arrow"></span></a>
+        <div class="cb-nav-dropdown">
+          <a href="services/bim-modeling.html">BIM Modeling</a>
+          <a href="services/cad-drafting.html">CAD Drafting</a>
+          <a href="services/construction-documentation.html">Construction Documentation</a>
+          <a href="services/pdf-to-cad.html">PDF to CAD</a>
+          <a href="services/revit-services.html">Revit Services</a>
+          <a href="services/mep-coordination.html">MEP Coordination</a>
+          <a href="services/architectural-drafting.html">Architectural Drafting</a>
+          <a href="services/shop-drawings.html">Shop Drawings</a>
+          <a href="services/scan-to-bim.html">Scan to BIM</a>
+        </div>
+      </li>
+      <li><a href="projects.html">Work</a></li>
+      <li><a href="workflow.html">Process</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Insights</a></li>
+    </ul>
+    <div class="cb-nav-actions">
+      <a href="tel:+12345678900" class="cb-nav-ghost">Call Us</a>
+      <a href="contact.html" class="cb-nav-cta"><span>Get a Quote &rarr;</span></a>
+      <button class="cb-nav-hamburger" id="cbHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<div class="cb-nav-mobile" id="cbMobileMenu" role="menu">
+  <div class="cb-nav-mobile-section">Navigation</div>
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="projects.html">Our Work</a>
+  <a href="workflow.html">Process</a>
+  <a href="blog.html">Insights</a>
+  <div class="cb-nav-mobile-section">Services</div>
+  <a href="services/bim-modeling.html">BIM Modeling</a>
+  <a href="services/cad-drafting.html">CAD Drafting</a>
+  <a href="services/construction-documentation.html">Construction Docs</a>
+  <a href="services/mep-coordination.html">MEP Coordination</a>
+  <a href="services/scan-to-bim.html">Scan to BIM</a>
+  <a href="services/index.html">All Services &rarr;</a>
+  <a href="contact.html" class="cb-mobile-cta">Get a Quote &rarr;</a>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     1. HERO
+     ═══════════════════════════════════════════ -->
+<section class="cb-section cb-hero" id="home">
+  <div class="cb-hero-bg" aria-hidden="true"></div>
+  <div class="cb-container cb-grid-2" style="position:relative;z-index:2;">
+    <div>
+      <div class="cb-badge cb-reveal">ARCHITECTURAL PRODUCTION ON-DEMAND</div>
+      <h1 class="cb-h1 cb-reveal cb-delay-100">
+        When Your Drawing<br>
+        Workload <strong>Spikes,</strong><br>
+        We Step In.
+      </h1>
+      <p class="cb-p-lead cb-reveal cb-delay-200">Scale your architectural capacity instantly without the overhead of new hires. We provide high-precision BIM and CAD support when your internal team is at capacity.</p>
+      <div style="display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap;" class="cb-reveal cb-delay-300">
+        <a href="contact.html" class="cb-btn cb-btn-primary"><span>Start Your Project &rarr;</span></a>
+        <a href="projects.html" class="cb-btn cb-btn-light"><span>View Our Work</span></a>
+      </div>
+      <div class="cb-trusted cb-reveal cb-delay-400">
+        <span>TRUSTED BY</span>
+        <span>150+ Top-Tier Architectural &amp; Design-Build Firms</span>
+      </div>
+      <div class="cb-industries-strip cb-reveal cb-delay-500">
+        <a href="industries.html" class="cb-industry-pill">Architecture</a>
+        <a href="industries.html" class="cb-industry-pill">Engineering</a>
+        <a href="industries.html" class="cb-industry-pill">Construction</a>
+        <a href="industries.html" class="cb-industry-pill">Healthcare</a>
+        <a href="industries.html" class="cb-industry-pill">Education</a>
+      </div>
+    </div>
+    <div>
+      <div class="cb-image-wrap cb-reveal cb-delay-200" id="cbHeroSlider">
+        <div class="cb-slide active">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1400&auto=format&fit=crop" alt="Architectural BIM Model" loading="eager">
+        </div>
+        <div class="cb-slide">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1400&auto=format&fit=crop" alt="Commercial High Rise" loading="lazy">
+        </div>
+        <div class="cb-slide">
+          <img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=1400&auto=format&fit=crop" alt="Structural Engineering" loading="lazy">
+        </div>
+        <div class="cb-slide">
+          <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1400&auto=format&fit=crop" alt="MEP Coordination" loading="lazy">
+        </div>
+        <div class="cb-slide">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1400&auto=format&fit=crop" alt="Residential BIM" loading="lazy">
+        </div>
+        <div class="cb-slider-dots">
+          <button class="cb-dot active" data-index="0" aria-label="Slide 1"></button>
+          <button class="cb-dot" data-index="1" aria-label="Slide 2"></button>
+          <button class="cb-dot" data-index="2" aria-label="Slide 3"></button>
+          <button class="cb-dot" data-index="3" aria-label="Slide 4"></button>
+          <button class="cb-dot" data-index="4" aria-label="Slide 5"></button>
+        </div>
+        <div class="cb-float-br">
+          <div>
+            <div class="cb-float-br-tag" id="cbBadgeTag">PROJECT TYPE</div>
+            <div class="cb-float-br-title" id="cbBadgeTitle">Architectural BIM — LOD 400</div>
+          </div>
+          <svg width="20" height="20" fill="none" stroke="#748D92" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     2. STATS STRIP
+     ═══════════════════════════════════════════ -->
+<div class="cb-stats">
+  <div class="cb-stats-inner">
+    <div class="cb-stat-item cb-reveal">
+      <div class="cb-stat-num"><span class="cb-counter" data-target="150" data-suffix="+">0+</span></div>
+      <div class="cb-stat-label">Firms Served</div>
+    </div>
+    <div class="cb-stat-item cb-reveal cb-delay-100">
+      <div class="cb-stat-num"><span class="cb-counter" data-target="40" data-suffix="%">0%</span></div>
+      <div class="cb-stat-label">Avg. Cost Reduction</div>
+    </div>
+    <div class="cb-stat-item cb-reveal cb-delay-200">
+      <div class="cb-stat-num"><span class="cb-counter" data-target="24" data-suffix="hr">0hr</span></div>
+      <div class="cb-stat-label">Turnaround Time</div>
+    </div>
+    <div class="cb-stat-item cb-reveal cb-delay-300">
+      <div class="cb-stat-num"><span class="cb-counter" data-target="98" data-suffix="%">0%</span></div>
+      <div class="cb-stat-label">Client Satisfaction</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     3. CLIENT LOGOS MARQUEE
+     ═══════════════════════════════════════════ -->
+<div class="cb-clients-section">
+  <p class="cb-clients-label">Trusted by leading architecture &amp; construction firms</p>
+  <div class="cb-clients-overflow">
+    <div class="cb-marquee-track">
+      <!-- Set 1 -->
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Sterling &amp; Co.</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V8l8-6 8 6v12"/></svg>Apex Design Group</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Vertex Architecture</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>NovaBuild Partners</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>Meridian Structures</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg>Prism Civil Works</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>Elevate AEC</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>Blueprint Studio</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V8l8-6 8 6v12"/></svg>CoreForm Designs</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Zenith Builders</div>
+      <!-- Set 2 (duplicate for infinite scroll) -->
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Sterling &amp; Co.</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V8l8-6 8 6v12"/></svg>Apex Design Group</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Vertex Architecture</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>NovaBuild Partners</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>Meridian Structures</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg>Prism Civil Works</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>Elevate AEC</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>Blueprint Studio</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V8l8-6 8 6v12"/></svg>CoreForm Designs</div>
+      <div class="cb-client-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Zenith Builders</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     4. BOTTLENECK SECTION
+     ═══════════════════════════════════════════ -->
+<section class="cb-section cb-bottleneck" id="bottleneck">
+  <div class="cb-container cb-grid-2">
+    <div>
+      <h2 class="cb-h2 cb-reveal">Production Becomes<br><em>The Bottleneck</em></h2>
+      <p class="cb-p-lead cb-reveal cb-delay-100">Every successful firm hits a wall where the volume of drafting and documentation exceeds internal capacity, threatening project timelines and design quality.</p>
+      <div class="cb-issue cb-reveal cb-delay-200">
+        <div class="cb-issue-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+        </div>
+        <div>
+          <h4>Unpredictable Spikes</h4>
+          <p>Projects come in waves. Maintaining a massive staff for peak times is financially unsustainable.</p>
+        </div>
+      </div>
+      <div class="cb-issue cb-reveal cb-delay-300">
+        <div class="cb-issue-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <div>
+          <h4>Hiring is Slow &amp; Expensive</h4>
+          <p>Recruiting skilled BIM specialists takes months. You need production support today, not next quarter.</p>
+        </div>
+      </div>
+      <div class="cb-issue cb-reveal cb-delay-400">
+        <div class="cb-issue-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        </div>
+        <div>
+          <h4>Overloaded Internal Teams</h4>
+          <p>Burnout leads to errors. Keep your designers focused on design while we handle the documentation.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="cb-image-wrap cb-reveal cb-delay-300">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200" alt="Architecture team at work">
+        <div class="cb-float-tl">
+          <div class="cb-float-tl-num">40%</div>
+          <div class="cb-float-tl-text">REDUCTION IN<br>PRODUCTION COSTS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     5. EXTENDED TEAM
+     ═══════════════════════════════════════════ -->
+<section class="cb-section cb-extended" id="about">
+  <div class="cb-container cb-grid-2">
+    <div>
+      <div class="cb-image-wrap cb-reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200" alt="Architectural Model">
+      </div>
+    </div>
+    <div>
+      <div class="cb-badge cb-reveal">YOUR EXTENDED TEAM</div>
+      <h2 class="cb-h2 cb-reveal cb-delay-100">Your <strong>Extended</strong><br>Production Team</h2>
+      <blockquote class="cb-quote cb-reveal cb-delay-200">"Think of us not as an external agency, but as your back-office drafting team that's always ready to scale. We maintain your standards, your templates, and your precision."</blockquote>
+      <div class="cb-extended-features-4 cb-reveal cb-delay-300">
+        <div>
+          <h4>Overnight Progress</h4>
+          <p>Global time-zones allow us to work while your local team rests, ensuring 24/7 productivity.</p>
+        </div>
+        <div>
+          <h4>Scalable Expertise</h4>
+          <p>From single residential units to multi-million square foot commercial developments.</p>
+        </div>
+        <div>
+          <h4>Your Standards</h4>
+          <p>We adopt your file naming, layer conventions, and quality benchmarks from day one.</p>
+        </div>
+        <div>
+          <h4>Dedicated PM</h4>
+          <p>Every project has a dedicated project manager ensuring communication never breaks down.</p>
+        </div>
+      </div>
+      <div class="cb-reveal cb-delay-400" style="margin-top:40px;">
+        <a href="about.html" class="cb-btn cb-btn-primary"><span>Learn About Us</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     6. SPECIALIZATIONS
+     ═══════════════════════════════════════════ -->
+<section class="cb-section cb-spec" id="services">
+  <div class="cb-container">
+    <div class="cb-section-header">
+      <div class="cb-badge cb-reveal">WHAT WE DO</div>
+      <h2 class="cb-h2 cb-reveal cb-delay-100">Our Specializations</h2>
+      <p class="cb-p-lead cb-reveal cb-delay-200">Integrated technical solutions across the entire project lifecycle.</p>
+    </div>
+    <div class="cb-spec-grid">
+      <div class="cb-spec-row-1">
+        <div class="cb-spec-card cb-spec-light cb-reveal cb-delay-100" style="flex-direction:row;padding:0;">
+          <div style="flex:1;padding:40px;display:flex;flex-direction:column;">
+            <svg class="cb-spec-icon" fill="none" stroke="#124E66" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"/></svg>
+            <h3 class="cb-spec-h3">CAD Drafting</h3>
+            <p class="cb-spec-p">Highly detailed 2D documentation using AutoCAD, ensuring absolute compliance with your firm's graphic standards and delivery requirements.</p>
+            <a href="services/cad-drafting.html" style="margin-top:auto;padding-top:32px;font-size:14px;font-weight:600;color:#124E66;display:flex;align-items:center;gap:8px;">Learn More <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <div class="cb-spec-tags">+ FLOOR PLANS &nbsp;+ ELEVATIONS &nbsp;+ SECTIONS &nbsp;+ DETAILS</div>
+          </div>
+          <div style="width:38%;border-left:1px solid #E8EEF1;overflow:hidden;border-radius:0 16px 16px 0;">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=600" alt="CAD Draft" style="width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease;">
+          </div>
+        </div>
+        <div class="cb-spec-card cb-spec-dark cb-reveal cb-delay-200">
+          <svg class="cb-spec-icon" fill="none" stroke="#FFF" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          <h3 class="cb-spec-h3">BIM Modeling</h3>
+          <p class="cb-spec-p">Full-scale Revit development from LOD 100 to LOD 400. Coordination, clash detection, and intelligent data management at every stage.</p>
+          <a href="services/bim-modeling.html" style="margin-top:auto;padding-top:32px;font-size:14px;font-weight:600;color:#FFF;display:flex;align-items:center;gap:8px;transition:gap 0.3s ease;" onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">Learn More <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+      <div class="cb-spec-row-2">
+        <div class="cb-spec-card cb-spec-light cb-reveal cb-delay-100" style="padding:40px;">
+          <svg class="cb-spec-icon" fill="none" stroke="#124E66" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <h3 class="cb-spec-h3">Construction Docs</h3>
+          <p class="cb-spec-p">Comprehensive CD sets ready for permit and construction. Every detail, schedule, and specification accounted for.</p>
+          <a href="services/construction-documentation.html" class="cb-service-card-link" style="margin-top:auto;padding-top:32px;font-size:14px;font-weight:600;color:#124E66;display:flex;align-items:center;gap:8px;">Learn More &rarr;</a>
+        </div>
+        <div class="cb-spec-card cb-spec-light cb-reveal cb-delay-200" style="padding:40px;">
+          <svg class="cb-spec-icon" fill="none" stroke="#124E66" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+          <h3 class="cb-spec-h3">MEP Coordination</h3>
+          <p class="cb-spec-p">Full MEP system modeling and clash detection, ensuring mechanical, electrical, and plumbing systems integrate seamlessly.</p>
+          <a href="services/mep-coordination.html" class="cb-service-card-link" style="margin-top:auto;padding-top:32px;font-size:14px;font-weight:600;color:#124E66;display:flex;align-items:center;gap:8px;">Learn More &rarr;</a>
+        </div>
+        <div class="cb-spec-card cb-spec-light cb-reveal cb-delay-300" style="padding:40px;">
+          <svg class="cb-spec-icon" fill="none" stroke="#124E66" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
+          <h3 class="cb-spec-h3">Scan to BIM</h3>
+          <p class="cb-spec-p">Transform point cloud data from 3D laser scans into accurate, intelligent BIM models for renovation and retrofit projects.</p>
+          <a href="services/scan-to-bim.html" class="cb-service-card-link" style="margin-top:auto;padding-top:32px;font-size:14px;font-weight:600;color:#124E66;display:flex;align-items:center;gap:8px;">Learn More &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;" class="cb-reveal cb-delay-300">
+      <a href="services/index.html" class="cb-btn cb-btn-primary"><span>View All 9 Services &rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     7. WHO WE EMPOWER
+     ═══════════════════════════════════════════ -->
+<section class="cb-section cb-empower" id="industries">
+  <div class="cb-container cb-grid-2">
+    <div class="cb-reveal">
+      <span class="cb-empower-label">STRATEGIC PARTNERS</span>
+      <h2 class="cb-h2" style="font-weight:300;">Who We<br><strong style="font-weight:700;">Empower</strong></h2>
+      <p class="cb-p-lead">We embed seamlessly into your workflow, scaling your team's capacity without disrupting your culture or standards.</p>
+      <a href="industries.html" class="cb-btn cb-btn-primary"><span>Our Industries</span></a>
+    </div>
+    <div class="cb-empower-grid">
+      <div class="cb-empower-item cb-reveal cb-delay-100">
+        <h4>Architects</h4>
+        <p>Focus on the creative concept and client relations while we execute the technical production and full CD sets.</p>
+      </div>
+      <div class="cb-empower-item cb-reveal cb-delay-200">
+        <h4>Builders</h4>
+        <p>Rapid shop drawings and as-built documentation to keep your site operations moving without delays.</p>
+      </div>
+      <div class="cb-empower-item cb-reveal cb-delay-300">
+        <h4>Interior Designers</h4>
+        <p>Detailed millwork drawings, lighting plans, and furniture schedules delivered with aesthetic sensitivity.</p>
+      </div>
+      <div class="cb-empower-item cb-reveal cb-delay-400">
+        <h4>Design-Build Firms</h4>
+        <p>Full-cycle BIM support to bridge the gap between design vision and construction reality seamlessly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     8. PORTFOLIO
+     ═══════════════════════════════════════════ -->
+<section class="cb-section cb-port" id="portfolio">
+  <div class="cb-container">
+    <div class="cb-port-header cb-reveal">
+      <div>
+        <h2 class="cb-h2" style="color:#FFF;margin-bottom:8px;">Our Work In Detail</h2>
+        <p style="color:#748D92;font-size:18px;">A gallery of precision and architectural clarity.</p>
+      </div>
+      <a href="projects.html" class="cb-port-link">EXPLORE ARCHIVE <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+    </div>
+    <div class="cb-port-grid">
+      <div class="cb-port-col">
+        <div class="cb-port-item cb-reveal cb-delay-100">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?q=80&w=1000" class="cb-port-img cb-img-4-3" alt="Raw Formwork Concrete">
+          <div class="cb-port-overlay">
+            <h4>Raw Formwork Concrete</h4>
+            <p>LOD 350 Architectural Detailing</p>
+          </div>
+        </div>
+        <div class="cb-port-item cb-reveal cb-delay-200">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?q=80&w=1000" class="cb-port-img cb-img-1-1" alt="Contemporary Gallery">
+          <div class="cb-port-overlay">
+            <h4>Contemporary Gallery</h4>
+            <p>Lighting &amp; Spatial Coordination</p>
+          </div>
+        </div>
+      </div>
+      <div class="cb-port-col">
+        <div class="cb-port-item cb-reveal cb-delay-200">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000" class="cb-port-img cb-img-3-4" alt="Commercial High-Rise">
+          <div class="cb-port-overlay">
+            <h4>Commercial High-Rise</h4>
+            <p>LOD 400 MEP Coordination</p>
+          </div>
+        </div>
+        <div class="cb-port-item cb-reveal cb-delay-300">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1000" class="cb-port-img cb-img-16-9" alt="Residential Estate">
+          <div class="cb-port-overlay">
+            <h4>Residential Estate</h4>
+            <p>Structural BIM &amp; Shop Drawings</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     9. WORKFLOW
+     ═══════════════════════════════════════════ -->
+<section class="cb-section cb-flow" id="workflow">
+  <div class="cb-container">
+    <div class="cb-section-header">
+      <div class="cb-badge cb-reveal">HOW IT WORKS</div>
+      <h2 class="cb-h2 cb-reveal cb-delay-100">Seamless Workflow</h2>
+      <p class="cb-p-lead cb-reveal cb-delay-200">Integrated into your existing pipeline in four simple steps. No learning curve, no disruption.</p>
+    </div>
+    <div class="cb-flow-grid">
+      <div class="cb-flow-item cb-reveal cb-delay-100">
+        <div class="cb-flow-num">01</div>
+        <h4>Send Drawings</h4>
+        <p>Upload your sketches, markups, or LOD definitions via our secure project portal or any file-sharing platform you already use.</p>
+      </div>
+      <div class="cb-flow-item cb-reveal cb-delay-200">
+        <div class="cb-flow-num">02</div>
+        <h4>We Produce</h4>
+        <p>Our certified BIM specialists execute technical drafting according to your exact standards — overnight if needed.</p>
+      </div>
+      <div class="cb-flow-item cb-reveal cb-delay-300">
+        <div class="cb-flow-num">03</div>
+        <h4>Review &amp; Refine</h4>
+        <p>Continuous feedback loops via cloud platforms for real-time adjustments and quality assurance.</p>
+      </div>
+      <div class="cb-flow-item cb-reveal cb-delay-400">
+        <div class="cb-flow-num">04</div>
+        <h4>Delivery</h4>
+        <p>Final high-precision files delivered in your required format — DWG, RVT, PDF, IFC — on schedule.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:56px;" class="cb-reveal cb-delay-500">
+      <a href="workflow.html" class="cb-btn cb-btn-light"><span>See Full Process</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     10. TESTIMONIALS
+     ═══════════════════════════════════════════ -->
+<section class="cb-testimonial-section" id="testimonials">
+  <div class="cb-container">
+    <div class="cb-grid-2" style="align-items:start;">
+      <div class="cb-reveal">
+        <div class="cb-badge">CLIENT VOICES</div>
+        <h2 class="cb-h2">What Our Clients<br><strong>Say About Us</strong></h2>
+        <p class="cb-p-lead">Industry leaders trust us to deliver production quality that matches their reputation.</p>
+        <a href="case-studies.html" class="cb-btn cb-btn-primary"><span>Read Case Studies</span></a>
+      </div>
+      <div class="cb-reveal cb-delay-200">
+        <div class="cb-testimonial-wrap" id="cbTestimonialWrap">
+          <div class="cb-testimonial-track" id="cbTestimonialTrack">
+            <div class="cb-testimonial-slide">
+              <div class="cb-test-quote-large">"Core BIM Solutions has fundamentally changed how we manage our studio. We no longer fear the big commissions; we know we have the production horsepower to back up our design vision."</div>
+              <div class="cb-test-author-row">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=120&h=120&fit=crop" alt="Marcus Sterling" class="cb-test-avatar" loading="lazy">
+                <div>
+                  <div class="cb-test-name">Marcus Sterling</div>
+                  <div class="cb-test-role-text">Principal Architect, Sterling &amp; Co.</div>
+                </div>
+              </div>
+            </div>
+            <div class="cb-testimonial-slide">
+              <div class="cb-test-quote-large">"The overnight turnaround is a game-changer. We send files at 6PM and wake up to fully coordinated BIM models. Their quality control is exceptional — fewer revisions than our internal team."</div>
+              <div class="cb-test-author-row">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=120&h=120&fit=crop" alt="Sarah Chen" class="cb-test-avatar" loading="lazy">
+                <div>
+                  <div class="cb-test-name">Sarah Chen</div>
+                  <div class="cb-test-role-text">Director of Production, Apex Design Group</div>
+                </div>
+              </div>
+            </div>
+            <div class="cb-testimonial-slide">
+              <div class="cb-test-quote-large">"We've been using Core BIM for three years across 40+ projects. Their MEP coordination work is outstanding. They've saved us from costly clashes on every major commercial build."</div>
+              <div class="cb-test-author-row">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=120&h=120&fit=crop" alt="James Moretti" class="cb-test-avatar" loading="lazy">
+                <div>
+                  <div class="cb-test-name">James Moretti</div>
+                  <div class="cb-test-role-text">CEO, NovaBuild Partners</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cb-test-controls">
+          <button class="cb-test-ctrl-btn" id="cbTestPrev" aria-label="Previous testimonial">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button class="cb-test-ctrl-btn" id="cbTestNext" aria-label="Next testimonial">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </button>
+          <div class="cb-test-dots">
+            <div class="cb-test-dot active" data-idx="0"></div>
+            <div class="cb-test-dot" data-idx="1"></div>
+            <div class="cb-test-dot" data-idx="2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     11. FAQ
+     ═══════════════════════════════════════════ -->
+<section class="cb-faq-section cb-section" id="faq">
+  <div class="cb-container">
+    <div class="cb-faq-grid">
+      <div class="cb-reveal">
+        <div class="cb-badge">FAQ</div>
+        <h2 class="cb-h2">Frequently Asked<br><strong>Questions</strong></h2>
+        <p class="cb-p-lead">Everything you need to know about working with Core BIM Solutions.</p>
+        <a href="contact.html" class="cb-btn cb-btn-ghost-teal"><span>Have More Questions?</span></a>
+      </div>
+      <div class="cb-reveal cb-delay-200">
+        <div class="cb-accordion">
+          <div class="cb-accordion-item">
+            <button class="cb-accordion-trigger">
+              How quickly can you start on a project?
+              <span class="cb-accordion-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
+            </button>
+            <div class="cb-accordion-body">
+              <p>We typically onboard new projects within 24–48 hours of receiving your brief and files. For urgent requests, we can often begin same-day. Our team operates across multiple time zones to ensure rapid response times.</p>
+            </div>
+          </div>
+          <div class="cb-accordion-item">
+            <button class="cb-accordion-trigger">
+              What file formats do you work with?
+              <span class="cb-accordion-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
+            </button>
+            <div class="cb-accordion-body">
+              <p>We work with all industry-standard formats: Revit (RVT/RFA), AutoCAD (DWG/DXF), PDF, IFC, NWC/NWD (Navisworks), Rhino, SketchUp, and more. Deliverables are provided in any format you require.</p>
+            </div>
+          </div>
+          <div class="cb-accordion-item">
+            <button class="cb-accordion-trigger">
+              How do you maintain confidentiality?
+              <span class="cb-accordion-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
+            </button>
+            <div class="cb-accordion-body">
+              <p>Every client relationship begins with a signed NDA. All project data is handled through encrypted, access-controlled systems. Our team operates under strict confidentiality protocols, and we never share client project information with any third party.</p>
+            </div>
+          </div>
+          <div class="cb-accordion-item">
+            <button class="cb-accordion-trigger">
+              How is pricing structured?
+              <span class="cb-accordion-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
+            </button>
+            <div class="cb-accordion-body">
+              <p>We offer flexible pricing models: fixed-price per project, hourly rates for ongoing support, or monthly retainer packages for firms with consistent volume. Get a custom quote within 24 hours of submitting your project brief.</p>
+            </div>
+          </div>
+          <div class="cb-accordion-item">
+            <button class="cb-accordion-trigger">
+              Do you handle revisions?
+              <span class="cb-accordion-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
+            </button>
+            <div class="cb-accordion-body">
+              <p>Yes. All projects include revision rounds as part of the scope. We use a collaborative cloud-based review process where you can annotate directly on drawings. Our goal is zero surprises — we align on deliverables before production begins.</p>
+            </div>
+          </div>
+          <div class="cb-accordion-item">
+            <button class="cb-accordion-trigger">
+              Can you scale up for large or urgent projects?
+              <span class="cb-accordion-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg></span>
+            </button>
+            <div class="cb-accordion-body">
+              <p>Absolutely. With a team of 40+ BIM and CAD specialists, we can scale resources rapidly to meet your deadlines. We've successfully supported firms on million-square-foot commercial projects with tight construction schedules.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     12. FINAL CTA
+     ═══════════════════════════════════════════ -->
+<section class="cb-section cb-cta">
+  <div class="cb-container" style="padding-top:60px;">
+    <div class="cb-cta-box cb-reveal">
+      <div class="cb-cta-status">SYSTEM.STATUS.READY</div>
+      <div class="cb-cta-active">SCALE.CAPACITY.ACTIVE</div>
+      <div class="cb-badge" style="background:rgba(18,78,102,0.4);color:rgba(255,255,255,0.85);border:1px solid rgba(18,78,102,0.5);margin-bottom:24px;">READY TO SCALE?</div>
+      <h2 class="cb-h2 cb-reveal cb-delay-100" style="color:#FFF;font-weight:300;position:relative;z-index:2;">Need Extra Production<br>Capacity? <strong style="font-weight:600;">Let's Talk.</strong></h2>
+      <p class="cb-reveal cb-delay-200" style="color:#748D92;max-width:600px;margin:24px auto 48px;font-size:16px;line-height:1.7;position:relative;z-index:2;">Stop turning down projects due to limited drafting resources. Let's build your extended production team today — no contracts, no commitments, just results.</p>
+      <div class="cb-reveal cb-delay-300" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;">
+        <a href="contact.html" class="cb-btn cb-btn-primary"><span>Request a Quote</span></a>
+        <a href="contact.html#book" class="cb-btn cb-btn-outline"><span>Book a Free Consultation</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════ -->
+<footer class="cb-section cb-footer">
+  <div class="cb-footer-inner">
+    <div class="cb-footer-top cb-reveal">
+      <div>
+        <img src="assets/images/logo.png" alt="Core BIM Solutions" class="cb-footer-logo-img">
+        <p class="cb-footer-tagline">Precision BIM production services for architecture, engineering and construction firms worldwide. Your extended team, on demand.</p>
+        <div class="cb-footer-socials">
+          <a href="https://linkedin.com" class="cb-footer-social" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="https://instagram.com" class="cb-footer-social" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="https://twitter.com" class="cb-footer-social" aria-label="Twitter / X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://youtube.com" class="cb-footer-social" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+      </div>
+      <div class="cb-footer-newsletter">
+        <h4>Stay in the Loop</h4>
+        <p>BIM insights, project spotlights, and production tips delivered monthly.</p>
+        <form class="cb-footer-form">
+          <input type="email" placeholder="your@email.com" aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="cb-footer-links-row cb-reveal cb-delay-100">
+      <div class="cb-footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services/bim-modeling.html">BIM Modeling</a></li>
+          <li><a href="services/cad-drafting.html">CAD Drafting</a></li>
+          <li><a href="services/construction-documentation.html">Construction Docs</a></li>
+          <li><a href="services/pdf-to-cad.html">PDF to CAD</a></li>
+          <li><a href="services/mep-coordination.html">MEP Coordination</a></li>
+          <li><a href="services/revit-services.html">Revit Services</a></li>
+          <li><a href="services/scan-to-bim.html">Scan to BIM</a></li>
+          <li><a href="services/shop-drawings.html">Shop Drawings</a></li>
+        </ul>
+      </div>
+      <div class="cb-footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="projects.html">Our Work</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="workflow.html">Process</a></li>
+          <li><a href="industries.html">Industries</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </div>
+      <div class="cb-footer-col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="blog.html">Blog &amp; Insights</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="contact.html">Request a Quote</a></li>
+          <li><a href="contact.html#book">Book a Consultation</a></li>
+        </ul>
+      </div>
+      <div class="cb-footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:hello@corebimsolutions.com">hello@corebimsolutions.com</a></li>
+          <li><a href="tel:+12345678900">+1 (234) 567-8900</a></li>
+          <li><a href="contact.html">Get in Touch</a></li>
+          <li><a href="contact.html#upload">Send Files</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="cb-footer-bottom cb-reveal cb-delay-200">
+      <div class="cb-footer-copy">&copy; 2026 Core BIM Solutions. All rights reserved.</div>
+      <div class="cb-footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">BIM Standards</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/core.js"></script>
+<script>
+// ── Testimonial Carousel ──────────────────────
+(function(){
+  const track = document.getElementById('cbTestimonialTrack');
+  const slides = track ? track.querySelectorAll('.cb-testimonial-slide') : [];
+  const dots   = document.querySelectorAll('.cb-test-dot');
+  const prev   = document.getElementById('cbTestPrev');
+  const next   = document.getElementById('cbTestNext');
+  let current  = 0;
+
+  function goTo(i) {
+    current = ((i % slides.length) + slides.length) % slides.length;
+    if (track) track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+  }
+
+  if (prev) prev.addEventListener('click', () => goTo(current - 1));
+  if (next) next.addEventListener('click', () => goTo(current + 1));
+  dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+  setInterval(() => goTo(current + 1), 6000);
+})();
+</script>
+</body>
+</html>

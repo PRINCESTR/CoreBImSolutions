@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Core BIM Solutions</title>
+  <meta name="description" content="Learn about Core BIM Solutions — our story, mission, vision, leadership team, and the global delivery model that powers 150+ top architecture and construction firms.">
+  <link rel="canonical" href="https://www.corebimsolutions.com/about.html">
+  <meta property="og:title" content="About Us | Core BIM Solutions">
+  <meta property="og:description" content="Our story, mission, and the team behind 150+ successful AEC partnerships worldwide.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    .cb-about-story { background: #fff; }
+    .cb-mission-vision { background: #F4F7F8; }
+    .cb-mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 60px; }
+    @media(max-width:768px){ .cb-mv-grid { grid-template-columns: 1fr; } }
+    .cb-mv-card {
+      padding: 48px 40px; border-radius: 24px; position: relative; overflow: hidden;
+    }
+    .cb-mv-card.mission { background: #212A31; color: #fff; }
+    .cb-mv-card.vision  { background: #124E66; color: #fff; }
+    .cb-mv-card h3 { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+    .cb-mv-card p { font-size: 20px; font-weight: 300; line-height: 1.6; color: rgba(255,255,255,0.85); }
+    .cb-mv-card::after {
+      content: ''; position: absolute; bottom: -40px; right: -40px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: rgba(255,255,255,0.04); pointer-events: none;
+    }
+
+    .cb-values-section { background: #fff; }
+    .cb-values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+    @media(max-width:992px){ .cb-values-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:600px){ .cb-values-grid { grid-template-columns: 1fr; } }
+
+    .cb-team-section { background: #F4F7F8; }
+    .cb-team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 60px; }
+    @media(max-width:992px){ .cb-team-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:600px){ .cb-team-grid { grid-template-columns: 1fr; } }
+
+    .cb-timeline-section { background: #fff; }
+    .cb-timeline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    @media(max-width:768px){ .cb-timeline-grid { grid-template-columns: 1fr; } }
+
+    .cb-global-section { background: #212A31; color: #fff; }
+    .cb-global-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    @media(max-width:768px){ .cb-global-grid { grid-template-columns: 1fr; } }
+    .cb-global-stat { margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 40px; }
+    .cb-global-stat:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+    .cb-global-stat-num { font-size: 52px; font-weight: 700; color: #fff; margin-bottom: 6px; letter-spacing: -2px; }
+    .cb-global-stat-label { font-size: 14px; color: #748D92; line-height: 1.5; }
+    .cb-world-map {
+      background: rgba(18,78,102,0.15);
+      border-radius: 24px; padding: 40px;
+      border: 1px solid rgba(18,78,102,0.3);
+      min-height: 300px; position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cb-map-placeholder { text-align: center; }
+    .cb-map-placeholder p { color: rgba(255,255,255,0.4); font-size: 14px; margin-top: 16px; }
+    .cb-region-dots { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; justify-content: center; }
+    .cb-region-dot {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.6);
+    }
+    .cb-region-dot::before {
+      content: ''; width: 8px; height: 8px; border-radius: 50%;
+      background: #124E66; display: block;
+      box-shadow: 0 0 0 3px rgba(18,78,102,0.3);
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Core BIM Solutions",
+    "foundingDate": "2014",
+    "description": "On-demand BIM and CAD production services for architecture, engineering, and construction firms.",
+    "url": "https://www.corebimsolutions.com",
+    "sameAs": ["https://linkedin.com/company/corebimsolutions"]
+  }
+  </script>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="cb-nav-wrapper" id="cbNavWrapper">
+  <nav class="cb-nav" id="cbNav" role="navigation" aria-label="Main Navigation">
+    <a href="index.html" aria-label="Core BIM Solutions Home" style="text-decoration:none;display:flex;align-items:center;">
+      <img src="assets/images/logo.png" alt="Core BIM Solutions" class="cb-nav-logo">
+    </a>
+    <ul class="cb-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services/index.html">Services <span class="cb-nav-dropdown-arrow"></span></a>
+        <div class="cb-nav-dropdown">
+          <a href="services/bim-modeling.html">BIM Modeling</a>
+          <a href="services/cad-drafting.html">CAD Drafting</a>
+          <a href="services/construction-documentation.html">Construction Documentation</a>
+          <a href="services/pdf-to-cad.html">PDF to CAD</a>
+          <a href="services/revit-services.html">Revit Services</a>
+          <a href="services/mep-coordination.html">MEP Coordination</a>
+          <a href="services/architectural-drafting.html">Architectural Drafting</a>
+          <a href="services/shop-drawings.html">Shop Drawings</a>
+          <a href="services/scan-to-bim.html">Scan to BIM</a>
+        </div>
+      </li>
+      <li><a href="projects.html">Work</a></li>
+      <li><a href="workflow.html">Process</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="blog.html">Insights</a></li>
+    </ul>
+    <div class="cb-nav-actions">
+      <a href="tel:+12345678900" class="cb-nav-ghost">Call Us</a>
+      <a href="contact.html" class="cb-nav-cta"><span>Get a Quote &rarr;</span></a>
+      <button class="cb-nav-hamburger" id="cbHamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</div>
+<div class="cb-nav-mobile" id="cbMobileMenu" role="menu">
+  <a href="index.html">Home</a><a href="about.html">About Us</a><a href="projects.html">Our Work</a>
+  <a href="workflow.html">Process</a><a href="services/index.html">All Services</a>
+  <a href="contact.html" class="cb-mobile-cta">Get a Quote &rarr;</a>
+</div>
+
+<!-- HERO -->
+<section class="cb-page-hero">
+  <div class="cb-page-hero-grid" aria-hidden="true"></div>
+  <div class="cb-page-hero-content">
+    <nav class="cb-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span>/</span><span>About Us</span>
+    </nav>
+    <div class="cb-badge cb-reveal">OUR STORY</div>
+    <h1 class="cb-h1 cb-reveal cb-delay-100">Built by AEC Professionals,<br><strong>For AEC Professionals</strong></h1>
+    <p class="cb-p-lead cb-reveal cb-delay-200">Founded in 2014, Core BIM Solutions was born from a simple insight: the best architecture firms in the world shouldn't be limited by their production capacity. We exist to change that.</p>
+  </div>
+</section>
+
+<!-- COMPANY STORY -->
+<section class="cb-about-story cb-section">
+  <div class="cb-container cb-grid-2">
+    <div>
+      <div class="cb-badge cb-reveal">OUR BEGINNING</div>
+      <h2 class="cb-h2 cb-reveal cb-delay-100">From a <strong>Single Studio</strong> to a Global Production Powerhouse</h2>
+      <p style="font-size:16px;color:#748D92;line-height:1.8;margin-bottom:24px;" class="cb-reveal cb-delay-200">Core BIM Solutions was founded by two architects who had lived the problem firsthand — brilliant design visions constrained by the sheer volume of documentation required to bring them to life. They set out to build a different kind of technical partner.</p>
+      <p style="font-size:16px;color:#748D92;line-height:1.8;margin-bottom:24px;" class="cb-reveal cb-delay-300">Starting with a team of five Revit specialists in 2014, we grew methodically, client by client, always prioritizing quality over scale. Today, our 40+ person team supports architecture, engineering, and construction firms across 12 countries — and counting.</p>
+      <p style="font-size:16px;color:#748D92;line-height:1.8;" class="cb-reveal cb-delay-400">What hasn't changed is our founding principle: every drawing that leaves our team should make your project better, not just faster.</p>
+    </div>
+    <div class="cb-reveal cb-delay-200">
+      <div class="cb-image-wrap">
+        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1200" alt="Core BIM Solutions team workspace" loading="lazy">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;">
+        <div style="background:#F4F7F8;border:1px solid #E8EEF1;border-radius:16px;padding:24px;text-align:center;">
+          <div style="font-size:36px;font-weight:700;color:#124E66;margin-bottom:4px;">2014</div>
+          <div style="font-size:12px;font-weight:600;color:#748D92;letter-spacing:1px;text-transform:uppercase;">Founded</div>
+        </div>
+        <div style="background:#F4F7F8;border:1px solid #E8EEF1;border-radius:16px;padding:24px;text-align:center;">
+          <div style="font-size:36px;font-weight:700;color:#124E66;margin-bottom:4px;">40+</div>
+          <div style="font-size:12px;font-weight:600;color:#748D92;letter-spacing:1px;text-transform:uppercase;">Team Members</div>
+        </div>
+        <div style="background:#F4F7F8;border:1px solid #E8EEF1;border-radius:16px;padding:24px;text-align:center;">
+          <div style="font-size:36px;font-weight:700;color:#124E66;margin-bottom:4px;">12</div>
+          <div style="font-size:12px;font-weight:600;color:#748D92;letter-spacing:1px;text-transform:uppercase;">Countries Served</div>
+        </div>
+        <div style="background:#F4F7F8;border:1px solid #E8EEF1;border-radius:16px;padding:24px;text-align:center;">
+          <div style="font-size:36px;font-weight:700;color:#124E66;margin-bottom:4px;">500+</div>
+          <div style="font-size:12px;font-weight:600;color:#748D92;letter-spacing:1px;text-transform:uppercase;">Projects Delivered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION & VISION -->
+<section class="cb-mission-vision cb-section">
+  <div class="cb-container">
+    <div class="cb-section-header">
+      <div class="cb-badge cb-reveal">OUR PURPOSE</div>
+      <h2 class="cb-h2 cb-reveal cb-delay-100">Mission &amp; <strong>Vision</strong></h2>
+      <p class="cb-p-lead cb-reveal cb-delay-200">The principles that guide every decision we make, every drawing we deliver.</p>
+    </div>
+    <div class="cb-mv-grid">
+      <div class="cb-mv-card mission cb-reveal cb-delay-100">
+        <h3>Our Mission</h3>
+        <p>"To eliminate production bottlenecks for the world's best architecture and construction firms — empowering their teams to focus on creativity, innovation, and client relationships while we handle the precision work that makes great design real."</p>
+      </div>
+      <div class="cb-mv-card vision cb-reveal cb-delay-200">
+        <h3>Our Vision</h3>
+        <p>"To become the world's most trusted on-demand BIM production partner — a seamless extension of every great firm's team, contributing to a built environment that is better designed, better coordinated, and better built."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY VALUES -->
+<section class="cb-values-section cb-section">
+  <div class="cb-container">
+    <div class="cb-section-header">
+      <div class="cb-badge cb-reveal">WHAT DRIVES US</div>
+      <h2 class="cb-h2 cb-reveal cb-delay-100">Our Core <strong>Values</strong></h2>
+      <p class="cb-p-lead cb-reveal cb-delay-200">Six principles embedded in every file, every deadline, every relationship.</p>
+    </div>
+    <div class="cb-values-grid">
+      <div class="cb-value-card cb-reveal cb-delay-100">
+        <div class="cb-value-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        </div>
+        <h4>Precision Above All</h4>
+        <p>Every line, every dimension, every coordinate matters. We treat accuracy as a non-negotiable — not a goal, but a baseline.</p>
+      </div>
+      <div class="cb-value-card cb-reveal cb-delay-200">
+        <div class="cb-value-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h4>True Partnership</h4>
+        <p>We don't see ourselves as vendors. We're an extension of your team — invested in your project's success as deeply as you are.</p>
+      </div>
+      <div class="cb-value-card cb-reveal cb-delay-300">
+        <div class="cb-value-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h4>Speed Without Compromise</h4>
+        <p>Our global team structure allows us to deliver fast — often overnight — without ever trading quality for speed.</p>
+      </div>
+      <div class="cb-value-card cb-reveal cb-delay-100">
+        <div class="cb-value-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <h4>Continuous Innovation</h4>
+        <p>BIM technology evolves rapidly. We invest in constant training, software, and process innovation to keep our clients ahead.</p>
+      </div>
+      <div class="cb-value-card cb-reveal cb-delay-200">
+        <div class="cb-value-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        </div>
+        <h4>Confidentiality</h4>
+        <p>We understand the sensitivity of design work. Every engagement begins with an NDA, and data security is built into our entire workflow.</p>
+      </div>
+      <div class="cb-value-card cb-reveal cb-delay-300">
+        <div class="cb-value-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h4>Global Mindset</h4>
+        <p>Our diverse, internationally distributed team brings cross-cultural expertise to every project — understanding local building codes, standards, and client expectations worldwide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="cb-team-section cb-section">
+  <div class="cb-container">
+    <div class="cb-section-header">
+      <div class="cb-badge cb-reveal">THE PEOPLE</div>
+      <h2 class="cb-h2 cb-reveal cb-delay-100">Meet Our <strong>Leadership</strong></h2>
+      <p class="cb-p-lead cb-reveal cb-delay-200">Experienced architects, engineers, and BIM specialists leading a world-class production team.</p>
+    </div>
+    <div class="cb-team-grid">
+      <div class="cb-team-card cb-reveal cb-delay-100">
+        <div class="cb-team-card-img">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&h=800&fit=crop" alt="David Harrington" loading="lazy">
+        </div>
+        <div class="cb-team-card-body">
+          <h4>David Harrington</h4>
+          <div class="cb-role">Co-Founder &amp; CEO</div>
+          <p>Former principal architect with 18 years of AEC industry experience. Founded CBS to solve the production bottleneck he lived firsthand.</p>
+        </div>
+      </div>
+      <div class="cb-team-card cb-reveal cb-delay-200">
+        <div class="cb-team-card-img">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&h=800&fit=crop" alt="Priya Nair" loading="lazy">
+        </div>
+        <div class="cb-team-card-body">
+          <h4>Priya Nair</h4>
+          <div class="cb-role">Co-Founder &amp; CTO</div>
+          <p>BIM Implementation Specialist and Revit expert. Architected the quality control and production systems that power every CBS project.</p>
+        </div>
+      </div>
+      <div class="cb-team-card cb-reveal cb-delay-300">
+        <div class="cb-team-card-img">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600&h=800&fit=crop" alt="James Moretti" loading="lazy">
+        </div>
+        <div class="cb-team-card-body">
+          <h4>James Moretti</h4>
+          <div class="cb-role">Head of Client Success</div>
+          <p>Former project manager at a top 20 US architecture firm. Ensures every client relationship operates as a true extended team partnership.</p>
+        </div>
+      </div>
+      <div class="cb-team-card cb-reveal cb-delay-100">
+        <div class="cb-team-card-img">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&h=800&fit=crop" alt="Amara Okafor" loading="lazy">
+        </div>
+        <div class="cb-team-card-body">
+          <h4>Amara Okafor</h4>
+          <div class="cb-role">Director of BIM Production</div>
+          <p>Certified Revit Professional with deep expertise in LOD 300–500 modeling, MEP coordination, and clash detection workflows.</p>
+        </div>
+      </div>
+      <div class="cb-team-card cb-reveal cb-delay-200">
+        <div class="cb-team-card-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&h=800&fit=crop" alt="Lucas Ferreira" loading="lazy">
+        </div>
+        <div class="cb-team-card-body">
+          <h4>Lucas Ferreira</h4>
+          <div class="cb-role">Head of CAD Production</div>
+          <p>AutoCAD expert and architectural drafter with 12 years of experience producing CD sets for residential, commercial, and mixed-use projects.</p>
+        </div>
+      </div>
+      <div class="cb-team-card cb-reveal cb-delay-300">
+        <div class="cb-team-card-img">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=600&h=800&fit=crop" alt="Sophie Kimura" loading="lazy">
+        </div>
+        <div class="cb-team-card-body">
+          <h4>Sophie Kimura</h4>
+          <div class="cb-role">Quality Assurance Lead</div>
+          <p>Architect and QA specialist who developed CBS's proprietary multi-stage review process — ensuring every deliverable meets the highest standards.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL DELIVERY -->
+<section class="cb-global-section cb-section">
+  <div class="cb-container">
+    <div class="cb-global-grid">
+      <div>
+        <div class="cb-badge cb-reveal" style="background:rgba(18,78,102,0.4);color:rgba(255,255,255,0.85);border:1px solid rgba(18,78,102,0.5);">GLOBAL REACH</div>
+        <h2 class="cb-h2 cb-reveal cb-delay-100" style="color:#fff;">Worldwide Delivery,<br><strong>Local Precision</strong></h2>
+        <p class="cb-p-lead cb-reveal cb-delay-200" style="color:#748D92;max-width:500px;">Our distributed team across North America, Europe, and Asia means your project is always being worked on — even while you sleep.</p>
+        <div class="cb-reveal cb-delay-300">
+          <div class="cb-global-stat">
+            <div class="cb-global-stat-num"><span class="cb-counter" data-target="12" data-suffix="">0</span></div>
+            <div class="cb-global-stat-label">Countries with active client partnerships — from San Francisco to Singapore</div>
+          </div>
+          <div class="cb-global-stat">
+            <div class="cb-global-stat-num"><span class="cb-counter" data-target="3" data-suffix=""></span></div>
+            <div class="cb-global-stat-label">Production hubs across time zones enabling true 24/7 delivery capability</div>
+          </div>
+          <div class="cb-global-stat">
+            <div class="cb-global-stat-num"><span class="cb-counter" data-target="98" data-suffix="%">0%</span></div>
+            <div class="cb-global-stat-label">On-time delivery rate across 500+ completed projects worldwide</div>
+          </div>
+        </div>
+      </div>
+      <div class="cb-reveal cb-delay-200">
+        <div class="cb-world-map">
+          <div class="cb-map-placeholder">
+            <svg width="80" height="80" fill="none" stroke="rgba(18,78,102,0.6)" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <p>Global delivery network across 12 countries</p>
+            <div class="cb-region-dots">
+              <span class="cb-region-dot">North America</span>
+              <span class="cb-region-dot">United Kingdom</span>
+              <span class="cb-region-dot">Europe</span>
+              <span class="cb-region-dot">Middle East</span>
+              <span class="cb-region-dot">India</span>
+              <span class="cb-region-dot">Australia</span>
+              <span class="cb-region-dot">Southeast Asia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="cb-timeline-section cb-section">
+  <div class="cb-container">
+    <div class="cb-timeline-grid">
+      <div class="cb-reveal">
+        <div class="cb-badge">OUR JOURNEY</div>
+        <h2 class="cb-h2">A Decade of<br><strong>Building Excellence</strong></h2>
+        <p class="cb-p-lead">From a five-person team to a global production powerhouse — every milestone grounded in quality and trust.</p>
+        <a href="contact.html" class="cb-btn cb-btn-primary"><span>Work With Us &rarr;</span></a>
+      </div>
+      <div class="cb-reveal cb-delay-200">
+        <div class="cb-timeline">
+          <div class="cb-timeline-item">
+            <div class="cb-timeline-dot"></div>
+            <div class="cb-timeline-year">2014</div>
+            <h4>Founded in Chicago</h4>
+            <p>David and Priya launch Core BIM Solutions with a team of 5, serving two local architecture firms.</p>
+          </div>
+          <div class="cb-timeline-item">
+            <div class="cb-timeline-dot"></div>
+            <div class="cb-timeline-year">2016</div>
+            <h4>First International Client</h4>
+            <p>First engagement with a London-based firm marks the beginning of our global expansion strategy.</p>
+          </div>
+          <div class="cb-timeline-item">
+            <div class="cb-timeline-dot"></div>
+            <div class="cb-timeline-year">2018</div>
+            <h4>MEP Coordination Division</h4>
+            <p>Launch of dedicated MEP coordination team. 50+ client firms and 200+ projects delivered.</p>
+          </div>
+          <div class="cb-timeline-item">
+            <div class="cb-timeline-dot"></div>
+            <div class="cb-timeline-year">2020</div>
+            <h4>Scan to BIM Capability</h4>
+            <p>Added point cloud processing and Scan to BIM services, expanding into renovation and retrofit markets.</p>
+          </div>
+          <div class="cb-timeline-item">
+            <div class="cb-timeline-dot"></div>
+            <div class="cb-timeline-year">2022</div>
+            <h4>100+ Client Milestone</h4>
+            <p>Surpassed 100 active client firms. Opened production hub in Asia-Pacific to enable true 24/7 delivery.</p>
+          </div>
+          <div class="cb-timeline-item">
+            <div class="cb-timeline-dot"></div>
+            <div class="cb-timeline-year">2026</div>
+            <h4>150+ Firms, 500+ Projects</h4>
+            <p>Today, a team of 40+ specialists delivers production support to 150+ firms across 12 countries — and growing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cb-section cb-cta">
+  <div class="cb-container" style="padding-top:60px;">
+    <div class="cb-cta-box cb-reveal">
+      <div class="cb-cta-status">TEAM.STATUS.READY</div>
+      <h2 class="cb-h2 cb-reveal cb-delay-100" style="color:#FFF;font-weight:300;position:relative;z-index:2;">Ready to Meet<br><strong style="font-weight:600;">Your Extended Team?</strong></h2>
+      <p class="cb-reveal cb-delay-200" style="color:#748D92;max-width:560px;margin:24px auto 48px;font-size:16px;line-height:1.7;position:relative;z-index:2;">Let's have a conversation about your production needs and how we can seamlessly integrate with your workflow.</p>
+      <div class="cb-reveal cb-delay-300" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;">
+        <a href="contact.html" class="cb-btn cb-btn-primary"><span>Start the Conversation</span></a>
+        <a href="projects.html" class="cb-btn cb-btn-outline"><span>See Our Work First</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="cb-section cb-footer">
+  <div class="cb-footer-inner">
+    <div class="cb-footer-top cb-reveal">
+      <div>
+        <img src="assets/images/logo.png" alt="Core BIM Solutions" class="cb-footer-logo-img">
+        <p class="cb-footer-tagline">Precision BIM production services for architecture, engineering and construction firms worldwide.</p>
+        <div class="cb-footer-socials">
+          <a href="https://linkedin.com" class="cb-footer-social" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="https://instagram.com" class="cb-footer-social" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        </div>
+      </div>
+      <div class="cb-footer-newsletter">
+        <h4>Stay in the Loop</h4>
+        <p>BIM insights, project spotlights, and production tips delivered monthly.</p>
+        <form class="cb-footer-form">
+          <input type="email" placeholder="your@email.com" aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="cb-footer-links-row cb-reveal cb-delay-100">
+      <div class="cb-footer-col"><h5>Services</h5><ul>
+        <li><a href="services/bim-modeling.html">BIM Modeling</a></li>
+        <li><a href="services/cad-drafting.html">CAD Drafting</a></li>
+        <li><a href="services/construction-documentation.html">Construction Docs</a></li>
+        <li><a href="services/mep-coordination.html">MEP Coordination</a></li>
+        <li><a href="services/scan-to-bim.html">Scan to BIM</a></li>
+      </ul></div>
+      <div class="cb-footer-col"><h5>Company</h5><ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="projects.html">Our Work</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul></div>
+      <div class="cb-footer-col"><h5>Resources</h5><ul>
+        <li><a href="blog.html">Blog &amp; Insights</a></li>
+        <li><a href="workflow.html">Our Process</a></li>
+        <li><a href="contact.html">Get a Quote</a></li>
+      </ul></div>
+      <div class="cb-footer-col"><h5>Contact</h5><ul>
+        <li><a href="mailto:hello@corebimsolutions.com">hello@corebimsolutions.com</a></li>
+        <li><a href="tel:+12345678900">+1 (234) 567-8900</a></li>
+        <li><a href="contact.html">Book a Call</a></li>
+      </ul></div>
+    </div>
+    <div class="cb-footer-bottom cb-reveal cb-delay-200">
+      <div class="cb-footer-copy">&copy; 2026 Core BIM Solutions. All rights reserved.</div>
+      <div class="cb-footer-legal">
+        <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">BIM Standards</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/core.js"></script>
+</body>
+</html>

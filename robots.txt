@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Disallow admin/sensitive paths (add more as needed)
+Disallow: /assets/js/
+Disallow: /assets/css/
+
+# Sitemap location
+Sitemap: https://www.corebimsolutions.com/sitemap.xml
+
+# Crawl delay (optional — be respectful of crawl budget)
+Crawl-delay: 1

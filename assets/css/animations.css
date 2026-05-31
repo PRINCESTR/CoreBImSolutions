@@ -1,0 +1,214 @@
+/* =========================================================
+   CORE BIM SOLUTIONS — ANIMATIONS CSS
+   Premium keyframes and animation utilities
+   ========================================================= */
+
+/* ─── Loading Skeleton ──────────────────────────────────── */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* ─── Glow Pulse ────────────────────────────────────────── */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(18,78,102,0.2); }
+  50% { box-shadow: 0 0 40px rgba(18,78,102,0.5); }
+}
+
+/* ─── Typed Cursor ──────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cb-typed-cursor {
+  display: inline-block;
+  width: 3px; height: 1em;
+  background: var(--cb-teal);
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: blink 1s ease infinite;
+}
+
+/* ─── Parallax Layers ───────────────────────────────────── */
+.cb-parallax-layer {
+  will-change: transform;
+  transform: translateY(var(--parallax-offset, 0));
+}
+
+/* ─── Hero Word Reveal ──────────────────────────────────── */
+.cb-word-reveal {
+  display: inline-block;
+  overflow: hidden;
+}
+.cb-word-reveal span {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.8s var(--cb-ease-spring);
+}
+.cb-word-reveal.is-visible span { transform: translateY(0); }
+
+/* ─── Counter Animation ─────────────────────────────────── */
+.cb-counter { font-variant-numeric: tabular-nums; }
+
+/* ─── Stagger children ──────────────────────────────────── */
+.cb-stagger > *:nth-child(1) { transition-delay: 0ms; }
+.cb-stagger > *:nth-child(2) { transition-delay: 100ms; }
+.cb-stagger > *:nth-child(3) { transition-delay: 200ms; }
+.cb-stagger > *:nth-child(4) { transition-delay: 300ms; }
+.cb-stagger > *:nth-child(5) { transition-delay: 400ms; }
+.cb-stagger > *:nth-child(6) { transition-delay: 500ms; }
+
+/* ─── Image Reveal ───────────────────────────────────────── */
+.cb-img-reveal {
+  position: relative;
+  overflow: hidden;
+}
+.cb-img-reveal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--cb-teal);
+  transform: scaleX(1);
+  transform-origin: right;
+  transition: transform 0.85s 0.2s var(--cb-ease-spring);
+}
+.cb-img-reveal.is-visible::after { transform: scaleX(0); }
+
+/* ─── Line Animation ─────────────────────────────────────── */
+.cb-line-anim {
+  position: relative;
+  overflow: hidden;
+}
+.cb-line-anim::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px; width: 0;
+  background: var(--cb-teal);
+  transition: width 0.6s var(--cb-ease-spring);
+}
+.cb-line-anim:hover::after { width: 100%; }
+
+/* ─── Floating Elements ──────────────────────────────────── */
+.cb-float-slow { animation: floatBob 7s ease-in-out infinite; }
+.cb-float-medium { animation: floatBob 5s ease-in-out infinite; }
+.cb-float-fast { animation: floatBob 3.5s ease-in-out infinite; }
+.cb-float-reverse { animation: floatBobReverse 6s ease-in-out infinite; }
+
+/* ─── Pulsing Dot ────────────────────────────────────────── */
+.cb-pulse-dot {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.cb-pulse-dot::before {
+  content: '';
+  position: absolute;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  background: rgba(18,78,102,0.3);
+  animation: pulseRing 2s ease-out infinite;
+}
+
+/* ─── Gradient Text ──────────────────────────────────────── */
+.cb-gradient-text {
+  background: linear-gradient(135deg, var(--cb-teal) 0%, #1a9ab8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Shimmer Effect ─────────────────────────────────────── */
+.cb-shimmer {
+  background: linear-gradient(90deg, var(--cb-border) 25%, var(--cb-bg-white) 50%, var(--cb-border) 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ─── Hover Card Tilt ────────────────────────────────────── */
+.cb-tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+/* ─── Progress Bar ───────────────────────────────────────── */
+.cb-progress {
+  height: 4px;
+  background: var(--cb-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.cb-progress-bar {
+  height: 100%;
+  background: var(--cb-teal);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.2s var(--cb-ease-spring);
+}
+.cb-progress-bar.animated { transform: scaleX(var(--progress, 0)); }
+
+/* ─── Section Background Patterns ───────────────────────── */
+.cb-bg-dots {
+  background-image: radial-gradient(circle, var(--cb-border) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.cb-bg-grid {
+  background-image:
+    linear-gradient(var(--cb-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cb-border) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.cb-bg-blueprint {
+  background-color: var(--cb-navy);
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─── Before/After Slider ────────────────────────────────── */
+.cb-before-after {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--cb-radius-md);
+  user-select: none;
+  cursor: ew-resize;
+}
+.cb-ba-after { position: absolute; inset: 0; }
+.cb-ba-after img { width: 100%; height: 100%; object-fit: cover; }
+.cb-ba-before img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cb-ba-slider {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: #fff;
+  transform: translateX(-50%);
+  z-index: 10;
+  transition: none;
+}
+.cb-ba-handle {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px; height: 40px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  color: var(--cb-navy);
+  gap: 4px;
+}
+.cb-ba-label {
+  position: absolute;
+  top: 16px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  padding: 4px 10px; border-radius: 4px;
+}
+.cb-ba-label-before { left: 16px; }
+.cb-ba-label-after { right: 16px; }

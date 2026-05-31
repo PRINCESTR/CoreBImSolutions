@@ -1,0 +1,1358 @@
+<style>
+/* =========================================
+   CORE BIM SOLUTIONS - ENHANCED VISUALS & ANIMATIONS
+   ========================================= */
+
+/* Reset and Scope */
+
+.cb-section {
+    
+    color: #212A31;
+    box-sizing: border-box;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    /* Full width — override any Elementor widget padding */
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+.cb-section * { box-sizing: border-box; }
+.cb-section img { max-width: 100%; height: auto; display: block; }
+.cb-section a { text-decoration: none; color: inherit; }
+/* Prevent Elementor's a{color:inherit} from breaking button text */
+.cb-section a.cb-btn { color: inherit; }
+
+.cb-container {
+    width: 100%;
+    padding: 100px max(40px, calc((100% - 1280px) / 2));
+}
+@media (max-width: 768px) {
+    .cb-container { padding: 60px max(24px, calc((100% - 1280px) / 2)); }
+}
+
+/* Typography */
+.cb-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #E8EEF1;
+    color: #124E66;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+}
+
+.cb-h1 {
+    font-size: clamp(48px, 5vw, 68px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: #212A31;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+.cb-h1 strong { font-weight: 600; color: #124E66; }
+
+.cb-h2 {
+    font-size: clamp(36px, 4vw, 48px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: #212A31;
+    margin-bottom: 24px;
+}
+.cb-h2 strong { font-weight: 600; }
+.cb-h2 em { font-style: italic; font-weight: 600; }
+
+.cb-p-lead {
+    font-size: 18px;
+    color: #748D92;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 540px;
+}
+
+/* -------------------------------------
+   UNIQUE BUTTON HOVER EFFECTS 
+   ------------------------------------- */
+.cb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    text-decoration: none;
+}
+
+/* Sweep background — sits BEHIND the text via z-index */
+.cb-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 0%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+.cb-btn:hover::before { width: 100%; }
+
+/* Bottom accent line */
+.cb-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    z-index: 2;
+    transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+.cb-btn:hover::after { width: 100%; }
+
+/* Ensure all inner text/icons sit above pseudo-elements */
+.cb-btn > * { position: relative; z-index: 1; }
+.cb-btn span,
+.cb-btn svg { position: relative; z-index: 1; }
+
+/* Primary — dark teal fill, white text */
+.cb-btn-primary,
+a.cb-btn-primary,
+a.cb-btn-primary:link,
+a.cb-btn-primary:visited {
+    background: #124E66;
+    color: #FFFFFF;
+    border: 2px solid #124E66;
+}
+.cb-btn-primary::before { background: #0e3d50; }
+.cb-btn-primary::after  { background: rgba(255,255,255,0.6); }
+.cb-btn-primary:hover,
+a.cb-btn-primary:hover {
+    color: #FFFFFF;
+    background: #124E66;
+    border-color: #0e3d50;
+    box-shadow: 0 10px 24px rgba(18,78,102,0.25);
+    transform: translateY(-2px);
+}
+
+/* Light — transparent with dark text */
+.cb-btn-light,
+a.cb-btn-light,
+a.cb-btn-light:link,
+a.cb-btn-light:visited {
+    background: transparent;
+    color: #212A31;
+    border: 2px solid #D3D9D4;
+}
+.cb-btn-light::before { background: #E8EEF1; }
+.cb-btn-light::after  { background: #124E66; }
+.cb-btn-light:hover,
+a.cb-btn-light:hover {
+    color: #212A31;
+    border-color: #748D92;
+    transform: translateY(-2px);
+}
+
+/* Outline — for use on dark backgrounds */
+.cb-btn-outline,
+a.cb-btn-outline,
+a.cb-btn-outline:link,
+a.cb-btn-outline:visited {
+    background: transparent;
+    color: #FFFFFF;
+    border: 2px solid rgba(255,255,255,0.5);
+}
+.cb-btn-outline::before { background: rgba(255,255,255,0.08); }
+.cb-btn-outline::after  { background: rgba(255,255,255,0.7); }
+.cb-btn-outline:hover,
+a.cb-btn-outline:hover {
+    color: #FFFFFF;
+    border-color: rgba(255,255,255,0.9);
+    transform: translateY(-2px);
+}
+
+/* -------------------------------------
+   SCROLL ANIMATIONS (Intersection Observer)
+   ------------------------------------- */
+.cb-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+.cb-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.cb-delay-100 { transition-delay: 100ms; }
+.cb-delay-200 { transition-delay: 200ms; }
+.cb-delay-300 { transition-delay: 300ms; }
+.cb-delay-400 { transition-delay: 400ms; }
+
+/* -------------------------------------
+   KEYFRAMES & VISUAL EFFECTS
+   ------------------------------------- */
+@keyframes floatBob {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+}
+
+/* Grids */
+.cb-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+@media (max-width: 992px) { .cb-grid-2 { grid-template-columns: 1fr; gap: 40px; } }
+
+/* Hero */
+.cb-hero { background: #F8FAFB; padding-top: 40px; }
+.cb-hero .cb-container { padding-bottom: 60px; }
+.cb-trusted { margin-top: 48px; display: flex; align-items: center; gap: 16px; font-size: 12px; font-weight: 600; color: #748D92; }
+.cb-trusted span:first-child { color: #212A31; letter-spacing: 1px; }
+
+/* Hero Image Slider */
+.cb-image-wrap { position: relative; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.06); aspect-ratio: 16/11; }
+.cb-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 24px; }
+.cb-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s cubic-bezier(0.4,0,0.2,1); border-radius: 24px; }
+.cb-slide.active { opacity: 1; }
+.cb-slide img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 24px; }
+
+/* Dots */
+.cb-slider-dots { position: absolute; bottom: 80px; left: 24px; display: flex; gap: 8px; z-index: 10; }
+.cb-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
+.cb-dot.active { background: #FFFFFF; width: 20px; border-radius: 4px; }
+
+/* Floating Badge */
+.cb-float-br { position: absolute; bottom: 24px; right: 24px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 16px 20px; border-radius: 12px; width: 270px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between; animation: floatBob 5s ease-in-out infinite; z-index: 10; }
+.cb-float-br-tag { font-size: 10px; color: #748D92; letter-spacing: 1px; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; }
+.cb-float-br-title { font-size: 14px; font-weight: 600; color: #212A31; transition: opacity 0.4s ease; }
+
+/* Bottleneck */
+.cb-bottleneck { background: #F4F7F8; }
+.cb-issue { background: #FFFFFF; border: 1px solid #E8EEF1; border-radius: 12px; padding: 24px; display: flex; align-items: flex-start; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.cb-issue:hover { transform: translateX(10px); box-shadow: 0 15px 30px rgba(18, 78, 102, 0.08); border-color: #124E66; }
+.cb-issue-icon { width: 44px; height: 44px; background: #F8FAFB; border: 1px solid #E8EEF1; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 20px; flex-shrink: 0; color: #124E66; transition: all 0.4s ease; }
+.cb-issue:hover .cb-issue-icon { background: #124E66; color: #FFFFFF; border-color: #124E66; }
+.cb-issue h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; color: #212A31; }
+.cb-issue p { font-size: 14px; color: #748D92; line-height: 1.5; }
+
+.cb-float-tl { position: absolute; top: 32px; left: -32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 24px; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); animation: floatBob 6s ease-in-out infinite reverse; }
+.cb-float-tl-num { font-size: 32px; font-weight: 700; color: #124E66; line-height: 1; margin-bottom: 6px; }
+.cb-float-tl-text { font-size: 10px; font-weight: 700; color: #748D92; letter-spacing: 1px; text-transform: uppercase; line-height: 1.4; }
+@media(max-width: 992px) { .cb-float-tl { left: 24px; } }
+
+/* Extended */
+.cb-extended { background: #FFFFFF; }
+.cb-quote { font-size: 22px; font-style: italic; color: #748D92; line-height: 1.6; margin-bottom: 48px; border-left: none; padding-left: 0; }
+.cb-extended-features { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.cb-extended-features h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #124E66; }
+.cb-extended-features p { font-size: 14px; color: #748D92; line-height: 1.5; }
+
+/* Specializations */
+.cb-spec { background: #F4F7F8; text-align: center; }
+.cb-spec-grid { display: grid; gap: 24px; margin-top: 60px; text-align: left; }
+.cb-spec-row-1 { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; }
+.cb-spec-row-2 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+@media(max-width: 992px) { .cb-spec-row-1, .cb-spec-row-2 { grid-template-columns: 1fr; } }
+
+.cb-spec-card { border-radius: 16px; position: relative; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.cb-spec-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(18,78,102,0.08); }
+.cb-spec-light { background: #FFFFFF; border: 1px solid #E8EEF1; }
+.cb-spec-dark { background: #124E66; color: #FFFFFF; padding: 40px; }
+.cb-spec-dark p { color: #A0B2B6; }
+
+.cb-spec-icon { margin-bottom: 24px; width: 32px; height: 32px; }
+.cb-spec-h3 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+.cb-spec-p { font-size: 15px; line-height: 1.5; color: #748D92; }
+.cb-spec-tags { font-size: 10px; font-weight: 700; color: #748D92; letter-spacing: 1px; margin-top: auto; padding-top: 40px; text-transform: uppercase; }
+
+/* Empower */
+.cb-empower { background: #FFFFFF; }
+.cb-empower-label { font-size: 10px; font-weight: 700; color: #124E66; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; display: block; }
+.cb-empower-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 32px; }
+.cb-empower-item h4 { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: #124E66; }
+.cb-empower-item p { font-size: 14px; color: #748D92; line-height: 1.5; }
+
+/* Portfolio */
+.cb-port { background: #212A31; color: #FFFFFF; border-radius: 64px 64px 0 0; padding-top: 100px; padding-bottom: 100px; margin-top: 40px; }
+.cb-port-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; }
+.cb-port-link { font-size: 12px; font-weight: 600; letter-spacing: 1px; color: #FFFFFF; text-transform: uppercase; display: flex; align-items: center; gap: 8px; transition: color 0.3s ease; }
+.cb-port-link:hover { color: #D3D9D4; }
+
+.cb-port-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.cb-port-col { display: flex; flex-direction: column; gap: 24px; }
+
+/* Portfolio Items Hover & Overlays */
+.cb-port-item { position: relative; border-radius: 16px; overflow: hidden; }
+.cb-port-img { width: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); display: block; }
+.cb-port-item:hover .cb-port-img { transform: scale(1.05); }
+
+.cb-port-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(33, 42, 49, 0.95), transparent); padding: 40px 32px 32px; transform: translateY(20px); opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.cb-port-item:hover .cb-port-overlay { opacity: 1; transform: translateY(0); }
+.cb-port-overlay h4 { font-size: 20px; font-weight: 600; margin-bottom: 4px; color: #FFFFFF; }
+.cb-port-overlay p { font-size: 14px; color: #A0B2B6; margin: 0; }
+
+.cb-img-4-3 { aspect-ratio: 4/3; }
+.cb-img-1-1 { aspect-ratio: 1/1; }
+.cb-img-3-4 { aspect-ratio: 3/4; }
+.cb-img-16-9 { aspect-ratio: 16/9; }
+@media(max-width: 768px) { .cb-port-grid { grid-template-columns: 1fr; } .cb-port-header { flex-direction: column; align-items: flex-start; gap: 24px; } }
+
+/* Workflow */
+.cb-flow { background: #FFFFFF; text-align: center; }
+.cb-flow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 60px; text-align: left; }
+@media(max-width: 992px) { .cb-flow-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
+@media(max-width: 480px) { .cb-flow-grid { grid-template-columns: 1fr; } }
+.cb-flow-item { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.cb-flow-item:hover { transform: translateY(-8px); }
+.cb-flow-num { width: 48px; height: 48px; border: 1px solid #E8EEF1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600; color: #124E66; margin-bottom: 20px; background: #F8FAFB; transition: all 0.4s ease; }
+.cb-flow-item:hover .cb-flow-num { background: #124E66; color: #FFFFFF; border-color: #124E66; }
+.cb-flow-item h4 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: #212A31; }
+.cb-flow-item p { font-size: 14px; color: #748D92; line-height: 1.5; }
+
+/* Testimonial */
+.cb-test { background: #F4F7F8; text-align: center; padding: 120px 24px; }
+.cb-test-quote { font-size: clamp(24px, 4vw, 32px); font-weight: 300; color: #212A31; line-height: 1.4; max-width: 900px; margin: 0 auto 40px; }
+.cb-test-author { font-size: 16px; font-weight: 600; color: #212A31; margin-bottom: 4px; }
+.cb-test-role { font-size: 12px; font-weight: 600; color: #748D92; letter-spacing: 1px; text-transform: uppercase; }
+
+/* Final CTA */
+.cb-cta { background: #FFFFFF; padding-bottom: 100px; }
+.cb-cta-box { background: #212A31; border-radius: 32px; padding: 100px 40px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 40px 80px rgba(33, 42, 49, 0.15); }
+.cb-cta-status { position: absolute; top: 32px; left: 40px; font-size: 10px; font-weight: 600; letter-spacing: 2px; color: #748D92; }
+.cb-cta-active { position: absolute; bottom: 32px; right: 40px; font-size: 10px; font-weight: 600; letter-spacing: 2px; color: #748D92; }
+@media(max-width: 768px) { .cb-cta-status, .cb-cta-active { position: static; margin-bottom: 24px; } }
+
+/* =========================================
+   PREMIUM FOOTER
+   ========================================= */
+.cb-footer {
+    background: #0D1518;
+    color: #FFFFFF;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Subtle radial glow top-left */
+.cb-footer::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(18,78,102,0.18) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.cb-footer-inner {
+    width: 100%;
+    padding: 80px max(40px, calc((100% - 1280px) / 2)) 0;
+}
+@media(max-width:768px) { .cb-footer-inner { padding: 60px max(24px, calc((100% - 1280px) / 2)) 0; } }
+
+/* Top row: brand + newsletter */
+.cb-footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+    align-items: start;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+@media(max-width:900px) { .cb-footer-top { grid-template-columns: 1fr; gap: 48px; } }
+
+.cb-footer-logo-img {
+    height: 40px !important;
+    max-height: 40px !important;
+    width: auto !important;
+    max-width: 250px !important;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    margin-bottom: 20px;
+    display: block;
+    opacity: 0.9;
+}
+
+.cb-footer-tagline {
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    max-width: 380px;
+    margin-bottom: 28px;
+}
+
+.cb-footer-socials {
+    display: flex;
+    gap: 12px;
+}
+
+.cb-footer-social {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+.cb-footer-social:hover {
+    background: #124E66;
+    border-color: #124E66;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+.cb-footer-social svg { width: 16px; height: 16px; fill: currentColor; }
+
+/* Newsletter */
+.cb-footer-newsletter h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+}
+.cb-footer-newsletter p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+.cb-footer-form {
+    display: flex;
+    gap: 8px;
+}
+.cb-footer-form input {
+    flex: 1;
+    padding: 12px 18px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s ease;
+    font-family: inherit;
+}
+.cb-footer-form input::placeholder { color: rgba(255,255,255,0.3); }
+.cb-footer-form input:focus { border-color: rgba(18,78,102,0.6); }
+.cb-footer-form button {
+    padding: 12px 22px;
+    background: #124E66;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-family: inherit;
+}
+.cb-footer-form button:hover { background: #0e3d50; transform: translateY(-1px); }
+@media(max-width:480px) { .cb-footer-form { flex-direction: column; } }
+
+/* Links row */
+.cb-footer-links-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 56px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+@media(max-width:768px) { .cb-footer-links-row { grid-template-columns: 1fr 1fr; gap: 32px; } }
+@media(max-width:480px) { .cb-footer-links-row { grid-template-columns: 1fr; } }
+
+.cb-footer-col h5 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 20px;
+}
+.cb-footer-col ul { list-style: none; }
+.cb-footer-col ul li { margin-bottom: 12px; }
+.cb-footer-col ul a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.cb-footer-col ul a:hover { color: #FFFFFF; }
+
+/* Bottom bar */
+.cb-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0 32px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.cb-footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
+.cb-footer-legal {
+    display: flex;
+    gap: 24px;
+}
+.cb-footer-legal a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+.cb-footer-legal a:hover { color: rgba(255,255,255,0.7); }
+@media(max-width:600px) { .cb-footer-bottom { flex-direction: column; text-align: center; } .cb-footer-legal { justify-content: center; } }
+
+/* =========================================
+   FLOATING PILL GLASS NAVBAR
+   ========================================= */
+
+/* Wrapper — controls position, centers the pill */
+.cb-nav-wrapper {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    padding: 0 24px;
+    pointer-events: none;
+    
+    box-sizing: border-box;
+    /* Start hidden so the entrance animation works cleanly */
+    opacity: 0;
+    transform: translateY(-24px);
+    animation: navEntrance 0.7s 0.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+@keyframes navEntrance {
+    from { opacity: 0; transform: translateY(-24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.cb-nav-wrapper.nav-hidden {
+    transform: translateY(calc(-100% - 28px));
+    opacity: 0;
+}
+
+/* The pill itself */
+.cb-nav {
+    pointer-events: all;
+    position: relative;          /* ← CRITICAL: contains the absolute-positioned links */
+    width: 100%;
+    max-width: 1280px;           /* Expanded to match hero container width */
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px 0 24px;      /* Increased padding */
+    background: rgba(18, 25, 32, 0.85);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.15),
+        0 2px 8px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    box-sizing: border-box;
+    transition: max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.4s ease, 
+                box-shadow 0.4s ease;
+}
+
+.cb-nav.nav-scrolled {
+    max-width: 1080px;           /* Shrink on scroll */
+    padding: 0 8px 0 20px;       /* Shrink padding */
+    background: rgba(12, 18, 24, 0.93);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.25),
+        0 4px 12px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+/* Logo */
+.cb-nav-logo {
+    height: 36px !important;
+    max-height: 36px !important;
+    width: auto !important;
+    max-width: 200px !important;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+    /* Invert so dark logo works on dark pill */
+    filter: brightness(0) invert(1);
+    transition: opacity 0.3s ease;
+}
+.cb-nav-logo:hover { opacity: 0.8; }
+
+/* Nav links */
+.cb-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cb-nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 100px;
+    transition: color 0.25s ease, background 0.25s ease;
+    white-space: nowrap;
+    position: relative;
+    display: block;
+}
+
+.cb-nav-links a:hover {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* Right side actions */
+.cb-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.cb-nav-ghost {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 100px;
+    text-decoration: none;
+    background: transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+.cb-nav-ghost:hover {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+.cb-nav-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background: #124E66;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Glow */
+    box-shadow: 0 0 0 0 rgba(18, 78, 102, 0);
+}
+.cb-nav-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1a6b8a, #0e3d50);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    border-radius: 100px;
+}
+.cb-nav-cta span { position: relative; z-index: 1; }
+.cb-nav-cta:hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 6px 24px rgba(18, 78, 102, 0.35);
+}
+.cb-nav-cta:hover::before { opacity: 1; }
+
+/* Hamburger */
+.cb-nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+.cb-nav-hamburger:hover { background: rgba(255,255,255,0.14); }
+.cb-nav-hamburger span {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 2px;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mobile drawer */
+.cb-nav-mobile {
+    display: none;
+    position: fixed;
+    top: 96px;
+    left: 24px;
+    right: 24px;
+    background: rgba(14, 20, 28, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 16px;
+    z-index: 9998;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.4);
+    animation: mobileMenuIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes mobileMenuIn {
+    from { opacity: 0; transform: translateY(-12px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.cb-nav-mobile.open { display: flex; }
+.cb-nav-mobile a {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 14px;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+.cb-nav-mobile a:hover { background: rgba(255,255,255,0.06); color: #FFF; }
+.cb-nav-mobile a:last-child {
+    margin-top: 8px;
+    background: #124E66;
+    color: #FFF;
+    font-weight: 600;
+    text-align: center;
+}
+.cb-nav-mobile a:last-child:hover { background: #0e3d50; }
+
+@media(max-width: 900px) {
+    .cb-nav-links { display: none; }
+    .cb-nav-ghost  { display: none; }
+    .cb-nav-hamburger { display: flex; }
+}
+@media(max-width: 480px) {
+    .cb-nav-wrapper { top: 12px; padding: 0 12px; }
+    .cb-nav { height: 56px; padding: 0 6px 0 16px; }
+    .cb-nav-logo { height: 30px; }
+}
+
+/* Push hero section below pill nav */
+.cb-nav-wrapper + .cb-section { padding-top: 112px; }
+</style>
+
+<!-- Floating Pill Navbar -->
+<div class="cb-nav-wrapper" id="cbNavWrapper">
+    <nav class="cb-nav" id="cbNav" role="navigation" aria-label="Main Navigation">
+
+        <!-- Logo -->
+        <a href="/" aria-label="Core BIM Solutions Home" style="text-decoration:none; display:flex; align-items:center;">
+            <img src="http://dev.corebimsolutions.com/wp-content/uploads/2026/03/CBS-LOGO-1.png" alt="Core BIM Solutions" class="cb-nav-logo">
+        </a>
+
+        <!-- Centered Links -->
+        <ul class="cb-nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Work</a></li>
+            <li><a href="#workflow">Process</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- Right side -->
+        <div class="cb-nav-actions">
+            <a href="tel:+1234567890" class="cb-nav-ghost">Call Us</a>
+            <a href="#quote" class="cb-nav-cta"><span>Get a Quote &rarr;</span></a>
+            <button class="cb-nav-hamburger" id="cbHamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+    </nav>
+</div>
+
+<!-- Mobile Drawer -->
+<div class="cb-nav-mobile" id="cbMobileMenu" role="menu">
+    <a href="#services">Services</a>
+    <a href="#portfolio">Work</a>
+    <a href="#workflow">Process</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#quote">Get a Quote &rarr;</a>
+</div>
+
+<!-- 1. Hero Section -->
+<section class="cb-section cb-hero">
+    <div class="cb-container cb-grid-2">
+        <div>
+            <div class="cb-badge cb-reveal">ARCHITECTURAL PRODUCTION ON-DEMAND</div>
+            <h1 class="cb-h1 cb-reveal cb-delay-100">When Your Drawing<br>Workload <strong>Spikes,</strong><br>We Step In.</h1>
+            <p class="cb-p-lead cb-reveal cb-delay-200">Scale your architectural capacity instantly without the overhead of new hires. We provide high-precision BIM and CAD support when your internal team is at capacity.</p>
+            <div style="display: flex; gap: 16px; margin-bottom: 24px;" class="cb-reveal cb-delay-300">
+                <a href="#contact" class="cb-btn cb-btn-primary"><span>Start Your Project</span></a>
+                <a href="#work" class="cb-btn cb-btn-light"><span>View Our Work</span></a>
+            </div>
+            <div class="cb-trusted cb-reveal cb-delay-400">
+                <span>TRUSTED BY</span>
+                <span>150+ Top-Tier Architectural & Design-Build Firms</span>
+            </div>
+        </div>
+        <div>
+            <div class="cb-image-wrap cb-reveal cb-delay-200" id="cbHeroSlider">
+
+                <!-- Slide 1 -->
+                <div class="cb-slide active">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1400&auto=format&fit=crop" alt="Architectural BIM Model" loading="eager">
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="cb-slide">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1400&auto=format&fit=crop" alt="Commercial High Rise" loading="lazy">
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="cb-slide">
+                    <img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=1400&auto=format&fit=crop" alt="Structural Engineering" loading="lazy">
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="cb-slide">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1400&auto=format&fit=crop" alt="MEP Coordination" loading="lazy">
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="cb-slide">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1400&auto=format&fit=crop" alt="Residential BIM" loading="lazy">
+                </div>
+
+                <!-- Dot Navigation -->
+                <div class="cb-slider-dots">
+                    <button class="cb-dot active" data-index="0" aria-label="Slide 1"></button>
+                    <button class="cb-dot" data-index="1" aria-label="Slide 2"></button>
+                    <button class="cb-dot" data-index="2" aria-label="Slide 3"></button>
+                    <button class="cb-dot" data-index="3" aria-label="Slide 4"></button>
+                    <button class="cb-dot" data-index="4" aria-label="Slide 5"></button>
+                </div>
+
+                <!-- Floating Badge -->
+                <div class="cb-float-br">
+                    <div>
+                        <div class="cb-float-br-tag" id="cbBadgeTag">PROJECT TYPE</div>
+                        <div class="cb-float-br-title" id="cbBadgeTitle">Architectural BIM — LOD 400</div>
+                    </div>
+                    <svg width="20" height="20" fill="none" stroke="#748D92" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2. Bottleneck Section -->
+<section class="cb-section cb-bottleneck">
+    <div class="cb-container cb-grid-2">
+        <div>
+            <h2 class="cb-h2 cb-reveal">Production Becomes<br><em>The Bottleneck</em></h2>
+            <p class="cb-p-lead cb-reveal cb-delay-100">Every successful firm hits a wall where the volume of drafting and documentation exceeds the internal capacity, threatening project timelines and design quality.</p>
+            
+            <div class="cb-issue cb-reveal cb-delay-200">
+                <div class="cb-issue-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                </div>
+                <div>
+                    <h4>Unpredictable Spikes</h4>
+                    <p>Projects come in waves. Maintaining a massive staff for peak times is financially unsustainable.</p>
+                </div>
+            </div>
+            <div class="cb-issue cb-reveal cb-delay-300">
+                <div class="cb-issue-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </div>
+                <div>
+                    <h4>Hiring is Slow</h4>
+                    <p>Recruiting skilled BIM specialists takes months. You need production support today, not next quarter.</p>
+                </div>
+            </div>
+            <div class="cb-issue cb-reveal cb-delay-400">
+                <div class="cb-issue-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                </div>
+                <div>
+                    <h4>Overloaded Internal Teams</h4>
+                    <p>Burnout leads to errors. Keep your designers focused on design while we handle the documentation.</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="cb-image-wrap cb-reveal cb-delay-300">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200" alt="Office at night">
+                <div class="cb-float-tl">
+                    <div class="cb-float-tl-num">40%</div>
+                    <div class="cb-float-tl-text">REDUCTION IN PRODUCTION<br>COSTS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. Extended Team -->
+<section class="cb-section cb-extended">
+    <div class="cb-container cb-grid-2">
+        <div>
+            <div class="cb-image-wrap cb-reveal">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200" alt="Architectural Model">
+            </div>
+        </div>
+        <div>
+            <h2 class="cb-h2 cb-reveal">Your <strong>Extended</strong><br>Production Team</h2>
+            <blockquote class="cb-quote cb-reveal cb-delay-100">"Think of us not as an external agency, but as your back-office drafting team that's always ready to scale. We maintain your standards, your templates, and your precision."</blockquote>
+            <div class="cb-extended-features">
+                <div class="cb-reveal cb-delay-200">
+                    <h4>Overnight Progress</h4>
+                    <p>Global time-zones allow us to work while your local team rests, ensuring 24/7 productivity.</p>
+                </div>
+                <div class="cb-reveal cb-delay-300">
+                    <h4>Scalable Expertise</h4>
+                    <p>From single residential units to multi-million square foot commercial developments.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. Specializations -->
+<section class="cb-section cb-spec">
+    <div class="cb-container">
+        <h2 class="cb-h2 cb-reveal" style="margin-bottom: 12px;">Our Specializations</h2>
+        <p class="cb-p-lead cb-reveal cb-delay-100" style="margin: 0 auto;">Integrated technical solutions across the entire project lifecycle.</p>
+        
+        <div class="cb-spec-grid">
+            <div class="cb-spec-row-1">
+                <div class="cb-spec-card cb-spec-light cb-reveal cb-delay-200" style="flex-direction: row; padding: 0;">
+                    <div style="flex: 1; padding: 40px; display: flex; flex-direction: column;">
+                        <svg class="cb-spec-icon" fill="none" stroke="#124E66" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                        <h3 class="cb-spec-h3">CAD Drafting</h3>
+                        <p class="cb-spec-p">Highly detailed 2D documentation using AutoCAD, ensuring absolute compliance with your firm's graphic standards.</p>
+                        <div class="cb-spec-tags">+ FLOOR PLANS &nbsp; + ELEVATIONS &nbsp; + TECHNICAL DETAILS</div>
+                    </div>
+                    <div style="width: 38%; display: none; display: block; border-left: 1px solid #E8EEF1; overflow: hidden;">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=600" alt="CAD Draft" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease;">
+                    </div>
+                </div>
+                <div class="cb-spec-card cb-spec-dark cb-reveal cb-delay-300">
+                    <svg class="cb-spec-icon" fill="none" stroke="#FFF" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                    <h3 class="cb-spec-h3">BIM Modeling</h3>
+                    <p class="cb-spec-p">Full-scale Revit development from LOD 100 to LOD 400. Coordination, clashing, and data management.</p>
+                    <a href="#" style="margin-top: auto; padding-top: 32px; font-size: 14px; font-weight: 600; color: #FFF; display: flex; align-items: center; gap: 8px; transition: transform 0.3s ease;">Learn More <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"></path></svg></a>
+                </div>
+            </div>
+            
+            <div class="cb-spec-row-2">
+                <div class="cb-spec-card cb-spec-light cb-reveal cb-delay-100" style="padding: 40px;">
+                    <svg class="cb-spec-icon" fill="none" stroke="#124E66" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <h3 class="cb-spec-h3">Construction Docs</h3>
+                    <p class="cb-spec-p">Comprehensive CD sets ready for permit and construction. Every detail accounted for.</p>
+                </div>
+                <div class="cb-spec-card cb-spec-light cb-reveal cb-delay-200" style="padding: 40px;">
+                    <svg class="cb-spec-icon" fill="none" stroke="#124E66" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                    <h3 class="cb-spec-h3">PDF to CAD</h3>
+                    <p class="cb-spec-p">Accurate vectorization of legacy drawings into workable DWG or Revit files.</p>
+                </div>
+                <div class="cb-spec-card cb-spec-light cb-reveal cb-delay-300" style="padding: 40px;">
+                    <svg class="cb-spec-icon" fill="none" stroke="#124E66" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                    <h3 class="cb-spec-h3">Design Support</h3>
+                    <p class="cb-spec-p">Assisting in spatial planning, interior elevations, and furniture layouts.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. Empower -->
+<section class="cb-section cb-empower">
+    <div class="cb-container cb-grid-2">
+        <div class="cb-reveal">
+            <span class="cb-empower-label">STRATEGIC PARTNERS</span>
+            <h2 class="cb-h2" style="font-weight: 300;">Who We<br><strong style="font-weight: 700;">Empower</strong></h2>
+        </div>
+        <div class="cb-empower-grid">
+            <div class="cb-empower-item cb-reveal cb-delay-100">
+                <h4>Architects</h4>
+                <p>Focus on the creative concept and client relations while we execute the technical production and CD sets.</p>
+            </div>
+            <div class="cb-empower-item cb-reveal cb-delay-200">
+                <h4>Builders</h4>
+                <p>Rapid shop drawings and as-built documentation to keep your site operations moving without delays.</p>
+            </div>
+            <div class="cb-empower-item cb-reveal cb-delay-300">
+                <h4>Interior Designers</h4>
+                <p>Detailed millwork drawings, lighting plans, and furniture schedules delivered with aesthetic sensitivity.</p>
+            </div>
+            <div class="cb-empower-item cb-reveal cb-delay-400">
+                <h4>Design-Build Firms</h4>
+                <p>Full-cycle BIM support to bridge the gap between design vision and construction reality.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. Portfolio -->
+<section class="cb-section cb-port">
+    <div class="cb-container">
+        <div class="cb-port-header cb-reveal">
+            <div>
+                <h2 class="cb-h2" style="color:#FFF; margin-bottom: 8px;">Our Work In Detail</h2>
+                <p style="color: #748D92; font-size: 18px;">A gallery of precision and architectural clarity.</p>
+            </div>
+            <a href="#" class="cb-port-link">EXPLORE ARCHIVE <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+        </div>
+        <div class="cb-port-grid">
+            <div class="cb-port-col">
+                <div class="cb-port-item cb-reveal cb-delay-100">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?q=80&w=1000" class="cb-port-img cb-img-4-3" alt="Concrete Wall">
+                    <div class="cb-port-overlay">
+                        <h4>Raw Formwork Concrete</h4>
+                        <p>LOD 350 Architectural Detailing</p>
+                    </div>
+                </div>
+                <div class="cb-port-item cb-reveal cb-delay-200">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?q=80&w=1000" class="cb-port-img cb-img-1-1" alt="Gallery Space">
+                    <div class="cb-port-overlay">
+                        <h4>Contemporary Gallery</h4>
+                        <p>Lighting & Spatial Coordination</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cb-port-col">
+                <div class="cb-port-item cb-reveal cb-delay-200">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000" class="cb-port-img cb-img-3-4" alt="Glass Building">
+                    <div class="cb-port-overlay">
+                        <h4>Commercial High-Rise</h4>
+                        <p>LOD 400 MEP Coordination</p>
+                    </div>
+                </div>
+                <div class="cb-port-item cb-reveal cb-delay-300">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1000" class="cb-port-img cb-img-16-9" alt="Modern House">
+                    <div class="cb-port-overlay">
+                        <h4>Residential Estate</h4>
+                        <p>Structural BIM & Shop Drawings</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. Workflow -->
+<section class="cb-section cb-flow">
+    <div class="cb-container">
+        <h2 class="cb-h2 cb-reveal" style="margin-bottom: 12px;">Seamless Workflow</h2>
+        <p class="cb-p-lead cb-reveal cb-delay-100" style="margin: 0 auto;">Integrated into your existing pipeline in four simple steps.</p>
+        
+        <div class="cb-flow-grid">
+            <div class="cb-flow-item cb-reveal cb-delay-100">
+                <div class="cb-flow-num">01</div>
+                <h4>Send Drawings</h4>
+                <p>Upload your sketches, markups, or LOD definitions via our secure portal.</p>
+            </div>
+            <div class="cb-flow-item cb-reveal cb-delay-200">
+                <div class="cb-flow-num">02</div>
+                <h4>We Produce</h4>
+                <p>Our specialists execute the technical drafting according to your strict standards.</p>
+            </div>
+            <div class="cb-flow-item cb-reveal cb-delay-300">
+                <div class="cb-flow-num">03</div>
+                <h4>Review</h4>
+                <p>Continuous feedback loops via cloud-based platforms for real-time adjustments.</p>
+            </div>
+            <div class="cb-flow-item cb-reveal cb-delay-400">
+                <div class="cb-flow-num">04</div>
+                <h4>Delivery</h4>
+                <p>Final high-precision files delivered in your required format (DWG, RVT, PDF).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 8. Testimonial -->
+<section class="cb-section cb-test">
+    <div class="cb-container cb-reveal">
+        <svg width="48" height="48" fill="#E8EEF1" viewBox="0 0 24 24" style="margin-bottom: 32px;"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+        <div class="cb-test-quote">"Core BIM Solutions has fundamentally changed how we manage our studio. We no longer fear the big commissions; we know we have the production horsepower to back up our design vision."</div>
+        <div class="cb-test-author">Marcus Sterling</div>
+        <div class="cb-test-role">PRINCIPAL ARCHITECT, STERLING & CO.</div>
+    </div>
+</section>
+
+<!-- 9. Final CTA -->
+<section class="cb-section cb-cta">
+    <div class="cb-container" style="padding-top: 60px;">
+        <div class="cb-cta-box cb-reveal">
+            <div class="cb-cta-status">SYSTEM.STATUS.READY</div>
+            <div class="cb-cta-active">SCALE.CAPACITY.ACTIVE</div>
+            <h2 class="cb-h2 cb-reveal cb-delay-100" style="color: #FFF; font-weight: 300;">Need Extra Production<br>Capacity?</h2>
+            <p class="cb-reveal cb-delay-200" style="color: #748D92; max-width: 600px; margin: 24px auto 48px; font-size: 16px; line-height: 1.6;">Stop turning down projects due to limited drafting resources. Let's build your extended production team today.</p>
+            <div class="cb-reveal cb-delay-300" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="#quote" class="cb-btn cb-btn-primary"><span>Request a Quote</span></a>
+                <a href="#expert" class="cb-btn cb-btn-outline"><span>Speak with an Expert</span></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 10. Footer -->
+<footer class="cb-section cb-footer">
+    <div class="cb-footer-inner">
+
+        <!-- Top: Brand + Newsletter -->
+        <div class="cb-footer-top cb-reveal">
+            <div>
+                <img src="http://dev.corebimsolutions.com/wp-content/uploads/2026/03/CBS-LOGO-1.png" alt="Core BIM Solutions" class="cb-footer-logo-img">
+                <p class="cb-footer-tagline">Precision BIM production services for architecture, engineering and construction firms worldwide.</p>
+                <div class="cb-footer-socials">
+                    <a href="#" class="cb-footer-social" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="#" class="cb-footer-social" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="#" class="cb-footer-social" aria-label="Twitter / X">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="#" class="cb-footer-social" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="cb-footer-newsletter">
+                <h4>Stay in the Loop</h4>
+                <p>BIM insights, project spotlights, and production tips delivered monthly.</p>
+                <div class="cb-footer-form">
+                    <input type="email" placeholder="your@email.com" aria-label="Email address">
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links Row -->
+        <div class="cb-footer-links-row cb-reveal cb-delay-100">
+            <div class="cb-footer-col">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="#">CAD Drafting</a></li>
+                    <li><a href="#">BIM Modeling (Revit)</a></li>
+                    <li><a href="#">Construction Docs</a></li>
+                    <li><a href="#">PDF to CAD</a></li>
+                    <li><a href="#">MEP Coordination</a></li>
+                </ul>
+            </div>
+            <div class="cb-footer-col">
+                <h5>Company</h5>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Work</a></li>
+                    <li><a href="#">Process</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="cb-footer-col">
+                <h5>Contact</h5>
+                <ul>
+                    <li><a href="mailto:hello@corebimsolutions.com">hello@corebimsolutions.com</a></li>
+                    <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                    <li><a href="#">Book a Call</a></li>
+                    <li><a href="#">Support Portal</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="cb-footer-bottom cb-reveal cb-delay-200">
+            <div class="cb-footer-copy">&copy; 2026 Core BIM Solutions. All rights reserved.</div>
+            <div class="cb-footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">BIM Standards</a>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+(() => {
+
+    /* ---- Scroll Reveal ---- */
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { root: null, rootMargin: '0px', threshold: 0.12 });
+    document.querySelectorAll('.cb-reveal').forEach(el => observer.observe(el));
+
+    /* ---- Hero Image Slider ---- */
+    const slides    = document.querySelectorAll('#cbHeroSlider .cb-slide');
+    const dots      = document.querySelectorAll('#cbHeroSlider .cb-dot');
+    const badgeTag  = document.getElementById('cbBadgeTag');
+    const badgeTitle= document.getElementById('cbBadgeTitle');
+
+    const slideData = [
+        { tag: 'PROJECT TYPE',      title: 'Architectural BIM — LOD 400' },
+        { tag: 'STRUCTURAL WORKS',  title: 'Commercial High-Rise Tower'  },
+        { tag: 'SITE ENGINEERING',  title: 'Structural Steel Detailing'  },
+        { tag: 'MEP COORDINATION',  title: 'Full MEP Clash Detection'    },
+        { tag: 'RESIDENTIAL BIM',   title: 'Custom Home — CD Set'        }
+    ];
+
+    let current  = 0;
+    let timer    = null;
+
+    function goTo(index) {
+        /* Deactivate old */
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+
+        current = (index + slides.length) % slides.length;
+
+        /* Activate new */
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+
+        /* Update badge with quick fade */
+        badgeTitle.style.opacity = '0';
+        badgeTag.style.opacity   = '0';
+        setTimeout(function() {
+            badgeTag.textContent   = slideData[current].tag;
+            badgeTitle.textContent = slideData[current].title;
+            badgeTitle.style.opacity = '1';
+            badgeTag.style.opacity   = '1';
+        }, 300);
+    }
+
+    function startAuto() {
+        timer = setInterval(function() { goTo(current + 1); }, 4000);
+    }
+
+    function resetAuto() {
+        clearInterval(timer);
+        startAuto();
+    }
+
+    /* Dot click */
+    dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+            goTo(parseInt(this.dataset.index));
+            resetAuto();
+        });
+    });
+
+    /* ---- Navbar Scroll Behaviour ---- */
+    const navWrapper = document.getElementById('cbNavWrapper');
+    const nav        = document.getElementById('cbNav');
+    let lastY = 0;
+
+    window.addEventListener('scroll', function() {
+        const y = window.scrollY;
+        /* Darken pill when scrolled */
+        if (y > 80) {
+            nav.classList.add('nav-scrolled');
+        } else {
+            nav.classList.remove('nav-scrolled');
+        }
+        /* Hide on scroll down, show on scroll up */
+        if (y > lastY && y > 200) {
+            navWrapper.classList.add('nav-hidden');
+        } else {
+            navWrapper.classList.remove('nav-hidden');
+        }
+        lastY = y;
+    }, { passive: true });
+
+    /* ---- Hamburger Toggle ---- */
+    const hamburger  = document.getElementById('cbHamburger');
+    const mobileMenu = document.getElementById('cbMobileMenu');
+
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', function() {
+            const open = mobileMenu.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', open);
+            /* Animate bars */
+            const bars = hamburger.querySelectorAll('span');
+            if (open) {
+                bars[0].style.transform = 'translateY(7px) rotate(45deg)';
+                bars[1].style.opacity   = '0';
+                bars[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+            } else {
+                bars[0].style.transform = '';
+                bars[1].style.opacity   = '1';
+                bars[2].style.transform = '';
+            }
+        });
+
+        /* Close mobile menu when a link is clicked */
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', false);
+                const bars = hamburger.querySelectorAll('span');
+                bars[0].style.transform = '';
+                bars[1].style.opacity   = '1';
+                bars[2].style.transform = '';
+            });
+        });
+    }
+
+    /* Start slider */
+    startAuto();
+})();
+});
+</script>
